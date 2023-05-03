@@ -1,0 +1,22 @@
+.mens-main{
+}
+
+.mens-breadcrum{
+    border: 1px solid #cc1515;
+    padding: 8px;
+}
+
+.mens-itemno{
+    border: 1px solid #000;
+    font-weight: 700;
+    color: #282c3f;
+    padding: 8px;
+}
+
+.mens-itemno>span{
+    font-weight: 200;
+}
+
+.mens-comps{
+    display: flex;
+}
