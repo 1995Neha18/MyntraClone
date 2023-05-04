@@ -31,7 +31,9 @@ export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box w={"90%"} mx={"auto"}>
+    <Box w={"100%"} mx={"auto"}
+    style={{ position: "sticky", top: 0, zIndex: 100 }}
+    >
       <Flex
         bg={useColorModeValue("white", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
@@ -63,7 +65,7 @@ export default function Navbar() {
             fontFamily={"heading"}
             color={useColorModeValue("gray.800", "white")}
           >
-            <img src="Myntra.png" alt="logo" width={"35%"} 
+            <img src="Myntra.png" alt="logo" width={"23%"} 
             ml="2rem"
             />
           </Text>
@@ -147,7 +149,8 @@ const DesktopNav = () => {
 
   return (
     <Stack direction={"row"} spacing={6}
-    mr={"28rem"}
+    mr={"30rem"}
+    mt={"1rem"}
     >
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}
@@ -226,7 +229,7 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
           >
             {label}
           </Text>
-          <Text fontSize={"sm"}>{subLabel}</Text>
+          <Text fontSize={"md"}>{subLabel}</Text>
         </Box>
         <Flex
           transition={"all .3s ease"}
