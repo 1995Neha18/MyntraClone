@@ -1,9 +1,11 @@
 .sidebar-main{
-   width: auto;
+    border: 1px solid #000;
+   width:30%;
+   margin: 3px;
+   margin-top: 80px;
 }
 
 .sidebar-main>div{
-    border: 1px solid #000;
     font-weight: 700; 
     padding: 8px;
 }
@@ -99,4 +101,32 @@
     background-color: red;
     margin: 3px;
 }
+
+
+@media only screen and (max-width: 600px) {
+   
+    .sidebar-main{
+       width:70%;
+    }
+
+  }
+
+
+
+@media only screen and (max-width: 800px) and (min-width: 600px) {
+   
+    .sidebar-main{
+       width:50%;
+    }
+
+  }
+
+
+  @media only screen and (max-width: 1000px) and (min-width: 800px) {
+   
+    .sidebar-main{
+       width:40%;
+    }
+
+  }
 
