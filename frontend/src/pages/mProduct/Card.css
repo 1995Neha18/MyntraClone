@@ -1,0 +1,10 @@
+.mens-card{
+    height: 330px;
+    width: 210px;
+    border: 1px solid #6bca0c;
+}
+
+.mens-card-img{
+    border: 1px solid #000;
+    height: 78%;
+}
