@@ -1,22 +1,78 @@
-.mens-main{
+.mens-main {
 }
 
-.mens-breadcrum{
-    border: 1px solid #cc1515;
-    padding: 8px;
+.mheader {
+  position: fixed;
+  width: 100%;
+  background: white;
 }
 
-.mens-itemno{
-    border: 1px solid #000;
-    font-weight: 700;
-    color: #282c3f;
-    padding: 8px;
+.mens-breadcrum {
+  border: 1px solid #cc1515;
+  padding: 8px;
 }
 
-.mens-itemno>span{
-    font-weight: 200;
+.mens-itemno {
+  border: 1px solid #000;
+  font-weight: 700;
+  color: #282c3f;
+  padding: 8px;
 }
 
-.mens-comps{
-    display: flex;
+.mens-itemno > span {
+  font-weight: 200;
 }
+
+.mens-comps {
+  display: flex;
+}
+
+.card-grid {
+  border: 1px solid #091ce5;
+  width: 100%;
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 25px;
+  padding: 10px;
+  scroll-behavior: smooth;
+  position: -webkit-sticky;
+}
+
+@media only screen and (max-width: 600px) {
+   
+    .card-grid {
+        grid-template-columns: repeat(1, 1fr);
+          
+      }
+
+  }
+
+
+
+@media only screen and (max-width: 800px) and (min-width: 600px) {
+   
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+       
+      }
+
+  }
+
+
+  @media only screen and (max-width: 1000px) and (min-width: 800px) {
+   
+    .card-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+  }
+
+
+  @media only screen and  (max-width: 1200px) and (min-width: 1000px) {
+   
+    .card-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+  }
