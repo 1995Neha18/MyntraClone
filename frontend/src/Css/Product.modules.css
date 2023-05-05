@@ -21,20 +21,22 @@
 }
 #deletebutton{
     margin-right: 20px;
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 60px;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
     transition: .25s ease-in-out;
+    font-size: larger;
 }
 #editbutton{
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 60px;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
     transition: .25s ease-in-out;
+    font-size: larger;
 }
 
 #deletebutton:hover{

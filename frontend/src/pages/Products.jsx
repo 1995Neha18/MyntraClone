@@ -3,16 +3,26 @@ import axios from "axios"
 import styled from "../Css/Product.modules.css"
 import {AiFillDelete} from "react-icons/ai"
 import {AiOutlineEdit} from "react-icons/ai"
+import { Link } from 'react-router-dom'
 
-function Products() {
+function Products({setpage,setedit}) {
    const [value,setvalue] = useState([])
+   const [change,setchange] = useState(false)
   useEffect(()=>{
-    axios.get("https://63c636e7dcdc478e15bd1636.mockapi.io/api/v1/Clothes")
+    axios.get("https://reqres.in/api/users")
     .then((res)=>{
-     setvalue(res.data)
+     setvalue(res.data.data)
     })    
-  },[])
-  console.log(value)
+  },[change])
+  
+  const handleedit = (id)=>{
+    
+    
+  }
+  const handledelete = (id)=>{
+    setchange(!change)
+     console.log(value)
+  }
 
   return (
     <div className='gridmainsection'>
@@ -21,8 +31,8 @@ function Products() {
             <img src={el.avatar} alt="" />
             <p>{el.name}</p>
             <div className="button">
-               <button id='deletebutton'><AiFillDelete/></button>
-               <button id='editbutton'><AiOutlineEdit/></button>
+               <button id='deletebutton' onClick={()=>handledelete(el.id)}><AiFillDelete/></button>
+              <Link to={`/admin/${el.id}`}><button id='editbutton'><AiOutlineEdit/></button></Link>
             </div> 
         </div>
        ))}
