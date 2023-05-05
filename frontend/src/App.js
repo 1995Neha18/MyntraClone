@@ -1,18 +1,15 @@
-
-import logo from './logo.svg';
-
-import Admin from './pages/Admin';
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
-
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <div className="App">
-      <Admin/>
+      {/* <Admin/> */}
       <Navbar />
       <Home />
+      <Footer />
     </div>
   );
 }

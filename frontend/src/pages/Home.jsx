@@ -1,11 +1,9 @@
 import {
   Box,
-  Container,
   Grid,
   Image,
   Stack,
   Text,
-  VStack,
 } from "@chakra-ui/react";
 import React from "react";
 import Carousels from "../components/Carousels";
@@ -27,10 +25,12 @@ const Home = () => {
           BEST OF MYNTRA EXCLUSIVE BRANDS
         </Text>
       </Box>
+      {/* Stack-1------------------------------------------------------------ */}
       <Stack
         w="100%"
         h={"auto"}
         mt={"3rem"}
+        _hover={{ cursor: "pointer" }}
         flexDirection={{
           base: "column",
           sm: "column",
@@ -44,61 +44,61 @@ const Home = () => {
             md: "repeat(4,1fr)",
             lg: "repeat(8,1fr)",
           }}
-          gap={2}
           w={"100%"}
           margin="auto"
+          
         >
-          <Box w={"180px"} h={"250px"}>
+          <Box w={"184.9px"} h={"242.49px"}>
             <Image
               src="https://assets.myntassets.com/f_webp,w_122,c_limit,fl_progressive,dpr_2.0/assets/images/retaillabs/2022/3/10/b25f89eb-fbeb-4013-829e-32ee5b5daaa01646895183668-Roadster-HRX_Unisex.jpg"
               w={"100%"}
               h={"100%"}
             />
           </Box>
-          <Box w={"180px"} h={"250px"}>
+          <Box w={"184.9px"} h={"242.49px"}>
             <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2022/2/9/bfa5c871-a5a5-4d81-b46e-18aedccfdc9b1644407437913-Kurta_sets-_Anouk-_AAY_-_more.jpg" />
           </Box>
-          <Box w={"180px"} h={"250px"}>
+          <Box w={"184.9px"} h={"242.49px"}>
             <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2022/2/9/046147d1-1874-4c10-adb9-6dbd88b606e71644407437923-Kurtas-_Anouk-_Sangria_-_more.jpg" />
           </Box>
-          <Box w={"180px"} h={"250px"}>
+          <Box w={"184.9px"} h={"242.49px"}>
             <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2022/2/9/76acf345-fc62-4b49-8b2c-9c0fc9c925311644407437977-Tops_-_Dressberry-_AAY_-_more.jpg" />
           </Box>
-          <Box w={"180px"} h={"250px"}>
+          <Box w={"184.9px"} h={"242.49px"}>
             <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2022/2/9/3923c0c1-2260-4f0e-9598-15b6f9d7731c1644407437960-Roadster_and_H-N_Shirts.jpg" />
           </Box>
-          <Box w={"180px"} h={"250px"}>
+          <Box w={"184.9px"} h={"242.49px"}>
             <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2022/2/9/eb70855e-98c4-412d-bf20-50804546d57e1644407437883-Dresses_-_Dressberry-_Chemistry_-_more.jpg" />
           </Box>
-          <Box w={"180px"} h={"250px"}>
+          <Box w={"184.9px"} h={"242.49px"}>
             <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2022/2/9/eff5a33f-ea24-4e70-84e5-ec4d25ee5c7b1644407437968-Roadster_and_KnK_Tshirts.jpg" />
           </Box>
-          <Box w={"180px"} h={"250px"}>
+          <Box w={"184.9px"} h={"242.49px"}>
             <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2022/2/9/667a71f0-c24b-4a00-a98c-cc6a54a815e91644407437985-Tshirts_-_Roadster-_KnK_-_more.jpg" />
           </Box>
           {/* //2nd row */}
-          <Box w={"180px"} h={"250px"}>
+          <Box w={"184.9px"} h={"242.49px"}>
             <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2022/2/9/ffaa74a6-4824-4b19-8936-70ffaef92f001644407437937-M-H_and_HRX_Tshirts.jpg" />
           </Box>
-          <Box w={"180px"} h={"250px"}>
+          <Box w={"184.9px"} h={"242.49px"}>
             <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2022/2/9/f9621136-0f00-44d5-aa06-b727a6c8f7c51644407437944-M-H_and_Wrogn_Shirts.jpg" />
           </Box>
-          <Box w={"180px"} h={"250px"}>
+          <Box w={"184.9px"} h={"242.49px"}>
             <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2022/2/9/3f41465b-7109-4bb2-bf79-ab89ff2128be1644407437899-HRX_and_Harvard_Trackpants.jpg" />
           </Box>
-          <Box w={"180px"} h={"250px"}>
+          <Box w={"184.9px"} h={"242.49px"}>
             <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2022/2/9/e27ee3af-3f6b-4106-9b20-2b4463c80ba41644407437953-Roadster-_Wrogn_Jeans.jpg" />
           </Box>
-          <Box w={"180px"} h={"250px"}>
+          <Box w={"184.9px"} h={"242.49px"}>
             <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2022/2/9/2b15a87a-1d92-4edf-99c2-ec390a38089e1644407437872-Activewear_-_HRX-_Slazenger.jpg" />
           </Box>
-          <Box w={"180px"} h={"250px"}>
+          <Box w={"184.9px"} h={"242.49px"}>
             <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2022/2/9/931b0b8f-c14d-4ec7-b923-cf512de991731644407437891-HOP_and_Anouk_Kurtas_-_sets.jpg" />
           </Box>
-          <Box w={"170px"} h={"250px"}>
+          <Box w={"184.9px"} h={"242.49px"}>
             <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2022/2/9/201d1bfd-287e-47b6-bef6-3c46eac444a51644407437906-Jeans_-_Roadster-_M-H_and_more.jpg" />
           </Box>
-          <Box w={"180px"} h={"250px"}>
+          <Box w={"184.9px"} h={"242.49px"}>
             <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2022/2/9/745cec57-af58-4ba6-8ae1-a3ccbe7c54e91644407437930-Lingerie_-_Loungewear_-_DB-_ETC.jpg" />
           </Box>
         </Grid>
@@ -115,10 +115,10 @@ const Home = () => {
           TOP PICKS
         </Text>
       </Box>
-
+      {/* Stack2 ------------------------------------------------------------------------------------- */}
       <Stack
         mt="2rem"
-        border={"1px solid #rgb(50,50,66)"}
+        _hover={{ cursor: "pointer" }}
         w="100%"
         h="auto"
         flexDirection={{
@@ -173,10 +173,10 @@ const Home = () => {
           CATEGORIES TO BAG
         </Text>
       </Box>
-
+      {/* Stack3 ------------------------------------------------------------------------------------- */}
       <Stack
         mt="3rem"
-        border={"1px solid #rgb(50,50,66)"}
+        _hover={{ cursor: "pointer" }}
         w="100%"
         h="auto"
         flexDirection={{
@@ -275,7 +275,6 @@ const Home = () => {
         </Grid>
       </Stack>
 
-      
       <Box mt={"2rem"}>
         <Text
           fontSize={"3xl"}
@@ -287,10 +286,10 @@ const Home = () => {
           DEALS ON TOP BRANDS
         </Text>
       </Box>
-
+      {/* Stack4 ---------------------------------------------------------------------------------------- */}
       <Stack
         mt="3rem"
-        border={"1px solid #rgb(50,50,66)"}
+        _hover={{ cursor: "pointer" }}
         w="100%"
         h="auto"
         flexDirection={{
@@ -389,9 +388,249 @@ const Home = () => {
         </Grid>
       </Stack>
 
-      
+      <Box mt={"2rem"}>
+        <Text
+          fontSize={"3xl"}
+          fontWeight={"bold"}
+          color={"#rgb(50,50,66)"}
+          fontFamily={"heading"}
+          pl={"2rem"}
+        >
+          MYNTRA LUXE
+        </Text>
+      </Box>
+      {/* Stack5 ------------------------------------------------------------------------------ */}
+      <Stack
+        w="100%"
+        h={"auto"}
+        mt={"3rem"}
+        _hover={{ cursor: "pointer" }}
+        flexDirection={{
+          base: "column",
+          sm: "column",
+          md: "column",
+          lg: "row",
+        }}
+      >
+        <Grid
+          gridTemplateColumns={{
+            base: "repeat(2,1fr)",
+            md: "repeat(4,1fr)",
+            lg: "repeat(8,1fr)",
+          }}
+          w={"100%"}
+          margin="auto"
+        >
+          <Box w={"189.9px"} h={"249.04px"}>
+            <Image
+              src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2021/11/12/8c07792e-bbf9-4935-8d9c-3a6a66eba4f01636726166240-HP-DKNY.jpg"
+              w={"100%"}
+              h={"100%"}
+            />
+          </Box>
+          <Box w={"189.9px"} h={"249.04px"}>
+            <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2021/11/12/1cbf16e3-afe2-4013-af4d-4e427f1e30ee1636726166266-HP-Junghans.jpg" />
+          </Box>
+          <Box w={"189.9px"} h={"249.04px"}>
+            <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2021/11/12/98b141e0-8d71-4e1b-8afa-49d1b7113a141636726166278-HP-Luxe.jpg" />
+          </Box>
+          <Box w={"189.9px"} h={"249.04px"}>
+            <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2021/11/12/35f5db21-a813-4c1a-81e4-7ca2bc5a08351636726166290-HP-Oris.jpg" />
+          </Box>
+          <Box w={"189.9px"} h={"249.04px"}>
+            <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2021/11/12/a9d39733-2022-4964-8c22-6c9e43d8502a1636726166259-HP-Hackett.jpg" />
+          </Box>
+          <Box w={"189.9px"} h={"249.04px"}>
+            <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2021/11/12/9c262136-abbd-4087-9267-bc1f3b90b3c01636726166303-HP-RaymondWeil.jpg" />
+          </Box>
+          <Box w={"189.9px"} h={"249.04px"}>
+            <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2021/11/12/5158cd92-89b5-452e-97c5-938bdf63516e1636726166284-HP-Movado.jpg" />
+          </Box>
 
+          <Box w={"189.9px"} h={"249.04px"}>
+            <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2021/11/12/585ac7b3-36e3-4964-8707-a2249df2b1291636726166319-HP-versace.jpg" />
+          </Box>
+          {/* //2nd row */}
+          <Box w={"189.9px"} h={"249.04px"}>
+            <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2021/6/17/4fac3c61-9e54-486c-a083-6f61df81436c1623933299972-HPCarouselVisibility-MyntraLuxe-Tissot.jpg" />
+          </Box>
+          <Box w={"189.9px"} h={"249.04px"}>
+            <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2021/11/12/65d5107e-35cf-4176-aef3-b7ae77dd09761636726166252-HP-FredPerry.jpg" />
+          </Box>
+          <Box w={"189.9px"} h={"249.04px"}>
+            <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2021/6/17/9b04f96a-f1ed-4edc-8840-483719055fdb1623940080549-HPCarouselVisibility-MyntraLuxe-ExploreStore.jpg" />
+          </Box>
+          <Box w={"189.9px"} h={"249.04px"}>
+            <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2021/11/12/6eaf8591-e92b-4ab3-a4e5-f38caac6c7d91636726166295-HP-POLORalphLauren.jpg" />
+          </Box>
+          <Box w={"189.9px"} h={"249.04px"}>
+            <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2021/11/12/884c0181-9da3-43c4-89f5-8696b97ec7751636726166246-HP-Dyson.jpg" />
+          </Box>
+          <Box w={"189.9px"} h={"249.04px"}>
+            <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2021/6/17/adf54639-1714-4935-8d22-ceef8ef1d8d31623940080665-HPCarouselVisibility-TheCollective-ExploreStore.jpg" />
+          </Box>
+          <Box w={"189.9px"} h={"249.04px"}>
+            <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2021/11/12/7e273a5a-9372-4956-af96-38aa903668201636726166272-HP-KarlLagerfeld.jpg" />
+          </Box>
+          <Box w={"189.9px"} h={"249.04px"}>
+            <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2021/6/17/bfa35f05-88b3-419f-af88-83c2ea0483f91623933299966-HPCarouselVisibility-MyntraLuxe-Tedbaker.jpg" />
+          </Box>
+        </Grid>
+      </Stack>
 
+      <Box mt={"2rem"}>
+        <Text
+          fontSize={"3xl"}
+          fontWeight={"bold"}
+          color={"#rgb(50,50,66)"}
+          fontFamily={"heading"}
+          pl={"2rem"}
+        >
+          LATEST IN BEAUTY & GROOMING
+        </Text>
+      </Box>
+      {/* Stack6 ----------------------------------------------------------------------- */}
+      <Stack
+        w="100%"
+        h={"auto"}
+        mt={"3rem"}
+        _hover={{ cursor: "pointer" }}
+        flexDirection={{
+          base: "column",
+          sm: "column",
+          md: "column",
+          lg: "row",
+        }}
+      >
+        <Grid
+          gridTemplateColumns={{
+            base: "repeat(2,1fr)",
+            md: "repeat(4,1fr)",
+            lg: "repeat(8,1fr)",
+          }}
+          w={"100%"}
+          margin="auto"
+        >
+          <Box w={"379.8px"} h={"271.27px"}>
+            <Image
+              src="https://assets.myntassets.com/w_245,c_limit,fl_progressive,dpr_2.0/assets/images/2022/2/25/2c49ab74-5efa-4104-b71c-cdb4891762931645791174303-SS22-Beauty-Philips.jpg"
+              w={"100%"}
+              h={"100%"}
+            />
+          </Box>
+          <Box w={"379.8px"} h={"271.27px"}>
+            <Image src="https://assets.myntassets.com/w_245,c_limit,fl_progressive,dpr_2.0/assets/images/2022/2/25/1850cdd3-e1be-47b3-ac4b-f8f395afce491645791174169-SS22-Beauty-Biotique.jpg" />
+          </Box>
+          <Box w={"379.8px"} h={"271.27px"}>
+            <Image src="https://assets.myntassets.com/w_245,c_limit,fl_progressive,dpr_2.0/assets/images/2022/2/25/7f7c368a-fa16-44f9-b7a2-8562ec21ba0a1645791174190-SS22-Beauty-ColorBar.jpg" />
+          </Box>
+          <Box w={"379.8px"} h={"271.27px"}>
+            <Image src="https://assets.myntassets.com/w_245,c_limit,fl_progressive,dpr_2.0/assets/images/2022/2/25/45b5535a-38c4-4c10-a301-3b6f3b56e43f1645791174266-SS22-Beauty-Lakme.jpg" />
+          </Box>
+        </Grid>
+      </Stack>
+      <Stack
+        w="100%"
+        h={"auto"}
+        _hover={{ cursor: "pointer" }}
+        flexDirection={{
+          base: "column",
+          sm: "column",
+          md: "column",
+          lg: "row",
+        }}
+      >
+        <Grid
+          gridTemplateColumns={{
+            base: "repeat(2,1fr)",
+            md: "repeat(4,1fr)",
+            lg: "repeat(8,1fr)",
+          }}
+          w={"100%"}
+          margin="auto"
+        >
+          {/* row-2 ----------------------------------------------------------- */}
+          <Box w={"379.8px"} h={"271.27px"}>
+            <Image src="https://assets.myntassets.com/w_245,c_limit,fl_progressive,dpr_2.0/assets/images/2022/2/25/b0ed0a6a-5b23-42d4-9dce-3fceb80ff68c1645791174229-SS22-Beauty-Himalaya.jpg" />
+          </Box>
+          <Box w={"379.8px"} h={"271.27px"}>
+            <Image src="https://assets.myntassets.com/w_245,c_limit,fl_progressive,dpr_2.0/assets/images/2022/2/25/564b3c15-dba4-422e-acd5-72aac85b75541645791174149-SS22-Beauty-Beardo.jpg" />
+          </Box>
+          <Box w={"379.8px"} h={"271.27px"}>
+            <Image src="https://assets.myntassets.com/w_245,c_limit,fl_progressive,dpr_2.0/assets/images/2022/2/25/f4330a78-6a11-4edc-bad9-dc03f02dec0e1645791174210-SS22-Beauty-FacesCanada.jpg" />
+          </Box>
+
+          <Box w={"379.8px"} h={"271.27px"}>
+            <Image src="https://assets.myntassets.com/w_245,c_limit,fl_progressive,dpr_2.0/assets/images/2022/2/25/31253277-4623-43ed-9129-9b8015520e901645791174285-SS22-Beauty-Mamaearth.jpg" />
+          </Box>
+        </Grid>
+      </Stack>
+
+      <Box w="100%" pl={"2rem"} mt={"2rem"}>
+        <Text
+          fontSize={"3xl"}
+          fontWeight={"bold"}
+          color={"#rgb(50,50,66)"}
+          fontFamily={"heading"}
+        >
+          TRENDING OUTFITS BY INFLUENCERS
+        </Text>
+      </Box>
+      {/* Stack-7------------------------------------------------------------ */}
+      <Stack
+        w="100%"
+        h={"auto"}
+        mt={"3rem"}
+        mb={"2rem"}
+        _hover={{ cursor: "pointer" }}
+        flexDirection={{
+          base: "column",
+          sm: "column",
+          md: "column",
+          lg: "row",
+        }}
+      >
+        <Grid
+          gridTemplateColumns={{
+            base: "repeat(2,1fr)",
+            md: "repeat(4,1fr)",
+            lg: "repeat(8,1fr)",
+          }}
+          w={"100%"}
+          margin="auto"
+          
+        >
+          <Box w={"189.9px"} h={"249.09px"}>
+            <Image
+              src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2022/3/16/0d7a22b9-e201-44db-ba04-6dfba8ebd5061647418012721-Studiocontent-HPCarousel-Women-WesternWear.jpg"
+              w={"100%"}
+              h={"100%"}
+            />
+          </Box>
+          <Box w={"189.9px"} h={"249.09px"}>
+            <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2022/3/16/d8bee915-9dbd-4cbb-9562-896dd16afdf31647418012563-Studiocontent-HPCarousel-Men-BeyondBasicsCasulaWear.jpg" />
+          </Box>
+          <Box w={"189.9px"} h={"249.09px"}>
+            <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2022/3/16/fa1a37d5-db35-4df5-9f3b-dfeebf9a22bd1647418012703-Studiocontent-HPCarousel-Women-IndianWearGuide.jpg" />
+          </Box>
+          <Box w={"189.9px"} h={"249.09px"}>
+            <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2022/3/16/843d4a44-833a-4179-a5a2-7f8c52bb1ef71647418012580-Studiocontent-HPCarousel-Men-FootwearFavouritesjpg.jpg" />
+          </Box>
+          <Box w={"189.9px"} h={"249.09px"}>
+            <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2022/3/16/ce751fad-7e3a-456d-87cd-457c6de7fccc1647418012597-Studiocontent-HPCarousel-Men-FormalWear.jpg" />
+          </Box>
+          <Box w={"189.9px"} h={"249.09px"}>
+            <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2022/3/16/0b6937a5-cf76-49c6-a3ab-551b7a17fafa1647418012686-Studiocontent-HPCarousel-Women-GymWear.jpg" />
+          </Box>
+          <Box w={"189.9px"} h={"249.09px"}>
+            <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2022/3/16/3edddaf4-c192-4651-966d-6b8e04fa309b1647418012668-Studiocontent-HPCarousel-Women-FormalWear.jpg" />
+          </Box>
+          <Box w={"189.9px"} h={"249.09px"}>
+            <Image src="https://assets.myntassets.com/w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2022/3/16/99b98dd2-83e4-4ac1-b2a5-b0bf8b81d62a1647418012633-Studiocontent-HPCarousel-Men-LoungeWear.jpg" />
+          </Box>
+          
+        </Grid>
+      </Stack>
     </div>
   );
 };
