@@ -1,7 +1,7 @@
 const express= require('express');
-const { productModel } = require('../model/productModel');
+const { cartModel } = require('../model/cartModel');
 
-const productRoutes = express.Router();
+const cartRoutes = express.Router();
 
 /**
  * @swagger
@@ -76,9 +76,9 @@ const productRoutes = express.Router();
 
 
 // POST Route
-productRoutes.post("/add",async (req,res)=>{
+cartRoutes.post("/add",async (req,res)=>{
     try {
-        const product =  new productModel(req.body)
+        const product =  new cartModel(req.body)
         await product.save()
         res.status(200).send({"msg": "Product added successfully"})
     } catch (error) {
@@ -87,19 +87,18 @@ productRoutes.post("/add",async (req,res)=>{
 })
 
 
-
 // Getting All products
-productRoutes.get("/",async (req,res)=>{
+cartRoutes.get("/",async (req,res)=>{
     let {Mens, Womens }= req.query
     console.log(Mens,Womens)
     try {
         let product
         if(Mens){
-            product = await productModel.find({Mens})
+            product = await cartModel.find({Mens})
         } else if(Womens){
-            product = await productModel.find({Womens})
+            product = await cartModel.find({Womens})
         }else if(Mens == undefined && Womens == undefined){
-            product = await productModel.find()
+            product = await cartModel.find()
         }
         res.send(product);
     } catch (error) {
@@ -126,19 +125,19 @@ productRoutes.get("/",async (req,res)=>{
  *       description: Bad Request      
  */
 // Filtering 
-productRoutes.get("/filter",async (req,res)=>{
+cartRoutes.get("/filter",async (req,res)=>{
     let {category, brand, strike_price} = req.query
     // console.log(category,brand,strike_price)
     try {
         let product;
         if(category){
-            product = await productModel.find({category})
+            product = await cartModel.find({category})
         }
         else if(brand){
-             product = await productModel.find({brand})
+             product = await cartModel.find({brand})
         }
         else if(strike_price){
-             product = await productModel.find({strike_price})
+             product = await cartModel.find({strike_price})
         }
         res.send(product);
 
@@ -146,6 +145,7 @@ productRoutes.get("/filter",async (req,res)=>{
         res.status(400).send({"err":error.message})
     }
 })
+
 
 /**
  * @swagger
@@ -194,11 +194,11 @@ productRoutes.get("/filter",async (req,res)=>{
  */
 
 
-productRoutes.patch("/:id",async (req,res)=>{
+cartRoutes.patch("/:id",async (req,res)=>{
     try {
-        const existsId = await productModel.findOne({"_id":req.params.id});
+        const existsId = await cartModel.findOne({"_id":req.params.id});
         if(existsId) {
-            await productModel.findByIdAndUpdate(req.params.id,req.body);
+            await cartModel.findByIdAndUpdate(req.params.id,req.body);
             res.status(200).send({"msg": "Product updated successfully"})
         }else{
             res.status(404).send({"msg": "Product not found"});
@@ -250,11 +250,11 @@ productRoutes.patch("/:id",async (req,res)=>{
 
 
 //Delete ROute
-productRoutes.delete("/:id",async (req,res)=>{
+cartRoutes.delete("/:id",async (req,res)=>{
     try {
-        const existsId = await productModel.findOne({"_id":req.params.id});
+        const existsId = await cartModel.findOne({"_id":req.params.id});
         if(existsId) {
-            await productModel.findByIdAndDelete(req.params.id);
+            await cartModel.findByIdAndDelete(req.params.id);
             res.status(200).send({"msg": "Product deleted successfully"})
         }else{
             res.status(404).send({"msg": "Product not found"});
@@ -264,19 +264,6 @@ productRoutes.delete("/:id",async (req,res)=>{
     }
 })
 
-
-productRoutes.get("/pagination",async(req,res)=>{
-    let {page=1,limit=3} = req.query
-    try {
-      const data = await productModel.find()
-      .limit(limit*1)
-      .skip((page-1)*limit)
-      .exec()
-      res.status(200).send(data)
-    } catch (error) {
-     res.status(400).send({"msg":error.message})
-    }
-  })
 
 /**
  * @swagger
@@ -320,10 +307,10 @@ productRoutes.get("/pagination",async(req,res)=>{
 
 
 // Searching Functionality
-productRoutes.get("/search",async(req,res)=>{
+cartRoutes.get("/search",async(req,res)=>{
     const {q} = req.query
     try {
-        const products = await productModel.find({ title: { $regex: new RegExp(q, "i") } })
+        const products = await cartModel.find({ title: { $regex: new RegExp(q, "i") } })
         res.status(200).send(products)
     } catch (error) {
         res.status(400).send({"msg":error})
@@ -367,14 +354,15 @@ productRoutes.get("/search",async(req,res)=>{
  */
 
 //GET BY ID
-productRoutes.get("/search/:id",async(req,res)=>{
+cartRoutes.get("/search/:id",async(req,res)=>{
     const {id} = req.params
     try {
-        const products = await productModel.findOne({_id:id})
+        const products = await cartModel.findOne({_id:id})
         res.status(200).send(products)
     } catch (error) {
         res.status(400).send({"msg":error})
     }
  })
- 
-module.exports = {productRoutes}
+
+
+ module.exports = {cartRoutes}
