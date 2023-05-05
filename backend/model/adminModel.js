@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const cartSchema=mongoose.Schema({
+const adminSchema=mongoose.Schema({
     name: String,
     title: String,
     strike_price: Number,
@@ -8,16 +8,15 @@ const cartSchema=mongoose.Schema({
     brand: String,
     discount: String,
     category: String,
-    image: Array,
-    userID: String
-
+    images: Array,
+    userID:String
 },{
     versionKey: false
 })
 
-const cartModel = mongoose.model('cart',cartSchema)
+const adminModel = mongoose.model('admin',adminSchema)
 
 module.exports ={
-    cartModel
+    adminModel
 }
 
