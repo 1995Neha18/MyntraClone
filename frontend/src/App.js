@@ -5,16 +5,16 @@ import Admin from './pages/Admin';
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
-import Cart from './components/cart/Cart';
+
 
 
 function App() {
   return (
     <div className="App">
-      {/* <Admin/>
+      {/* <Admin/> */}
       <Navbar />
-      <Home /> */}
-      <Cart/>
+      <Home />
+     
     </div>
   );
 }
