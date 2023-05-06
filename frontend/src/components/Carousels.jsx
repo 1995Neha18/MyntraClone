@@ -95,6 +95,27 @@ export default function Carousels() {
           }
           width={{ base: "300px", md: "450px", lg: "80%", xl: "100%" }}
         />
+         <Box
+          height={"400px"}
+          position="relative"
+          backgroundPosition="center"
+          backgroundRepeat="no-repeat"
+          backgroundSize="cover"
+          backgroundImage={
+            "https://assets.myntassets.com/w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2022/7/25/9be788ff-39a4-4214-99d0-fc97505aae5a1658752545685-USPA_Desk_Banner.jpg"
+          }
+        />
+        <Box
+          height={"400px"}
+          position="relative"
+          backgroundPosition="center"
+          backgroundRepeat="no-repeat"
+          backgroundSize="cover"
+          backgroundImage={
+            "https://assets.myntassets.com/w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2022/4/17/abd2b07f-954c-43ad-ba39-bfa50527d0641650180659364-Backpacks---Luggage_Desk.jpg"
+          }
+          width={{ base: "300px", md: "450px", lg: "80%", xl: "100%" }}
+        />
         <Box
           height={"400px"}
           position="relative"
@@ -135,16 +156,7 @@ export default function Carousels() {
             "https://assets.myntassets.com/w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2022/5/31/4031994d-9092-4aa7-aea1-f52f2ae5194f1654006594976-Activewear_DK.jpg"
           }
         />
-        <Box
-          height={"400px"}
-          position="relative"
-          backgroundPosition="center"
-          backgroundRepeat="no-repeat"
-          backgroundSize="cover"
-          backgroundImage={
-            "https://assets.myntassets.com/w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2022/7/25/9be788ff-39a4-4214-99d0-fc97505aae5a1658752545685-USPA_Desk_Banner.jpg"
-          }
-        />
+       
       </Slider>
     </Box>
   );

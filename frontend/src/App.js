@@ -1,11 +1,8 @@
-
-import logo from './logo.svg';
-
-import Admin from './pages/Admin';
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import AllRoutes from './components/AllRoutes';
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -14,7 +11,9 @@ function App() {
       {/* <Admin/> */}
       <Navbar />
       <AllRoutes/>
-      {/* <Home /> */}
+      <Home />
+      <Footer />
+
     </div>
   );
 }
