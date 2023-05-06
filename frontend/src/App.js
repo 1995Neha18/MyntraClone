@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import Mens from './pages/mProduct/Mens';
 
 
+
 function App() {
   return (
     <div className="App" onReset={true}>
@@ -13,7 +14,11 @@ function App() {
       <Navbar />
       <AllRoutes/>
       <Home />
+
+     
+
       <Footer />
+
     </div>
   );
 }
