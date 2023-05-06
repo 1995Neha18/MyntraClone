@@ -1,0 +1,50 @@
+.main{
+    border:1px solid black;
+    padding:5% 15% 5% 15%;
+    height:100vh;
+    width:100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.cart__items__section{
+    border:1px solid black;
+    height:80vh;
+    width:60%;
+
+
+
+}
+
+/* total price and order section */
+.price__section{
+    border:1px solid black;
+    height:80vh;
+    width:40%;
+    padding: 1%;
+    display:flex;
+    flex-direction: column;
+    gap: 2%;
+
+}
+/* .price__section>div{
+    border:1px solid black;
+    height:10vh;
+    width:100%;
+} */
+.price__section__coupons{
+    border:1px solid black;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    
+
+}
+.price__section__coupons>div{
+    border:1px solid black;
+    padding: 10px;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+
+}
