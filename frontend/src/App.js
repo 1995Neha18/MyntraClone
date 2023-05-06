@@ -11,7 +11,7 @@ import Home from "./pages/Home";
 function App() {
   return (
     <div className="App">
-      {/* <Admin/> */}
+      <Admin/>
       <Navbar />
       <Home />
      
