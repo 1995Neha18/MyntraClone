@@ -1,7 +1,7 @@
 const express= require('express');
-const { productModel } = require('../model/productModel');
+const { adminModel } = require('../model/adminModel');
 
-const productRoutes = express.Router();
+const adminRoutes = express.Router();
 
 /**
  * @swagger
@@ -51,10 +51,10 @@ const productRoutes = express.Router();
 
 /**
  * @swagger
- * /products/add:
+ * /adminProducts/add:
  *  post:
  *    summary: To add new Products.
- *    tags: [Products]
+ *    tags: [Admin]
  *    security:
  *      - bearerAuth: []
  *    requestBody:
@@ -75,10 +75,11 @@ const productRoutes = express.Router();
  */
 
 
+
 // POST Route
-productRoutes.post("/add",async (req,res)=>{
+adminRoutes.post("/add",async (req,res)=>{
     try {
-        const product =  new productModel(req.body)
+        const product =  new adminModel(req.body)
         await product.save()
         res.status(200).send({"msg": "Product added successfully"})
     } catch (error) {
@@ -86,20 +87,37 @@ productRoutes.post("/add",async (req,res)=>{
     }
 })
 
-
+/**
+ * @swagger
+ * /adminProducts/:
+ *  get:
+ *    summary: To get  all products.
+ *    tags: [Admin]
+ *    security:
+ *      - bearerAuth: []
+ *    responses:
+ *     200:
+ *       description: List of all Products
+ *       content:
+ *         application/json:
+ *            schema:
+ *               $ref: '#/components/schemas/NewProduct'
+ *     400:
+ *       description: Bad Request      
+ */
 
 // Getting All products
-productRoutes.get("/",async (req,res)=>{
+adminRoutes.get("/",async (req,res)=>{
     let {Mens, Womens }= req.query
     console.log(Mens,Womens)
     try {
         let product
         if(Mens){
-            product = await productModel.find({Mens})
+            product = await adminModel.find({Mens})
         } else if(Womens){
-            product = await productModel.find({Womens})
+            product = await adminModel.find({Womens})
         }else if(Mens == undefined && Womens == undefined){
-            product = await productModel.find()
+            product = await adminModel.find()
         }
         res.send(product);
     } catch (error) {
@@ -126,19 +144,19 @@ productRoutes.get("/",async (req,res)=>{
  *       description: Bad Request      
  */
 // Filtering 
-productRoutes.get("/filter",async (req,res)=>{
+adminRoutes.get("/filter",async (req,res)=>{
     let {category, brand, strike_price} = req.query
     // console.log(category,brand,strike_price)
     try {
         let product;
         if(category){
-            product = await productModel.find({category})
+            product = await adminModel.find({category})
         }
         else if(brand){
-             product = await productModel.find({brand})
+             product = await adminModel.find({brand})
         }
         else if(strike_price){
-             product = await productModel.find({strike_price})
+             product = await adminModel.find({strike_price})
         }
         res.send(product);
 
@@ -149,7 +167,7 @@ productRoutes.get("/filter",async (req,res)=>{
 
 /**
  * @swagger
- * /products/{id}:
+ * /adminProducts/{id}:
  *  patch:
  *    summary: To update product by id.
  *    parameters:
@@ -159,7 +177,7 @@ productRoutes.get("/filter",async (req,res)=>{
  *         description: ID of the product.
  *         schema:
  *           type: string
- *    tags: [Products]
+ *    tags: [Admin]
  *    security:
  *      - bearerAuth: []
  *    requestBody:
@@ -194,11 +212,11 @@ productRoutes.get("/filter",async (req,res)=>{
  */
 
 
-productRoutes.patch("/:id",async (req,res)=>{
+adminRoutes.patch("/:id",async (req,res)=>{
     try {
-        const existsId = await productModel.findOne({"_id":req.params.id});
+        const existsId = await adminModel.findOne({"_id":req.params.id});
         if(existsId) {
-            await productModel.findByIdAndUpdate(req.params.id,req.body);
+            await adminModel.findByIdAndUpdate(req.params.id,req.body);
             res.status(200).send({"msg": "Product updated successfully"})
         }else{
             res.status(404).send({"msg": "Product not found"});
@@ -210,7 +228,7 @@ productRoutes.patch("/:id",async (req,res)=>{
 
 /**
  * @swagger
- * /products/{id}:
+ * /adminProducts/{id}:
  *  delete:
  *    summary: To remove product by id.
  *    parameters:
@@ -220,7 +238,7 @@ productRoutes.patch("/:id",async (req,res)=>{
  *         description: ID of the product.
  *         schema:
  *           type: string
- *    tags: [Products]
+ *    tags: [Admin]
  *    security:
  *      - bearerAuth: []
  *    responses:
@@ -249,12 +267,14 @@ productRoutes.patch("/:id",async (req,res)=>{
  */
 
 
+
+
 //Delete ROute
-productRoutes.delete("/:id",async (req,res)=>{
+adminRoutes.delete("/:id",async (req,res)=>{
     try {
-        const existsId = await productModel.findOne({"_id":req.params.id});
+        const existsId = await adminModel.findOne({"_id":req.params.id});
         if(existsId) {
-            await productModel.findByIdAndDelete(req.params.id);
+            await adminModel.findByIdAndDelete(req.params.id);
             res.status(200).send({"msg": "Product deleted successfully"})
         }else{
             res.status(404).send({"msg": "Product not found"});
@@ -264,19 +284,6 @@ productRoutes.delete("/:id",async (req,res)=>{
     }
 })
 
-
-productRoutes.get("/pagination",async(req,res)=>{
-    let {page=1,limit=3} = req.query
-    try {
-      const data = await productModel.find()
-      .limit(limit*1)
-      .skip((page-1)*limit)
-      .exec()
-      res.status(200).send(data)
-    } catch (error) {
-     res.status(400).send({"msg":error.message})
-    }
-  })
 
 /**
  * @swagger
@@ -320,10 +327,10 @@ productRoutes.get("/pagination",async(req,res)=>{
 
 
 // Searching Functionality
-productRoutes.get("/search",async(req,res)=>{
+adminRoutes.get("/search",async(req,res)=>{
     const {q} = req.query
     try {
-        const products = await productModel.find({ title: { $regex: new RegExp(q, "i") } })
+        const products = await adminModel.find({ title: { $regex: new RegExp(q, "i") } })
         res.status(200).send(products)
     } catch (error) {
         res.status(400).send({"msg":error})
@@ -367,14 +374,14 @@ productRoutes.get("/search",async(req,res)=>{
  */
 
 //GET BY ID
-productRoutes.get("/search/:id",async(req,res)=>{
+adminRoutes.get("/search/:id",async(req,res)=>{
     const {id} = req.params
     try {
-        const products = await productModel.findOne({_id:id})
+        const products = await adminModel.findOne({_id:id})
         res.status(200).send(products)
     } catch (error) {
         res.status(400).send({"msg":error})
     }
  })
  
-module.exports = {productRoutes}
+module.exports = {adminRoutes}

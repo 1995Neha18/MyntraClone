@@ -25,8 +25,15 @@
    margin: 1px;
    background-color: #fff;
    border: none;
-   text-align: left;
+   text-align: right;
+   /* align-items: center; */
    border-radius: 5px;
+}
+.sidebar span{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: larger;
 }
 
 .sidebar button:hover{
@@ -45,7 +52,7 @@
         width: 100%;
         height: auto;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
         align-items: center;
     }
     .sidebar button {
