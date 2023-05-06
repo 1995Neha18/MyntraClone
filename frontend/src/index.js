@@ -1,19 +1,29 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-// import { Provider } from "react-redux";
+
 import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+import store from "./redux/store";
+import { Provider } from "react-redux";
+
+import Mens from "./pages/mProduct/Mens";
+
+
+
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <ChakraProvider>
-      {/* <Provider store={store}> */}
+  <div>
+    <ChakraProvider resetCSS={false}>
+    <Provider store={store}>
       <App />
-      {/* </Provider> */}
+      </Provider>
     </ChakraProvider>
+  </div>
   </BrowserRouter>
 );
 

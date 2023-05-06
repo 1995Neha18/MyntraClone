@@ -1,20 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Sidebar.css";
+import ResetRating from "./ResetRating";
+import { useSearchParams } from "react-router-dom";
+
 
 function Sidebar() {
+
+  
+  let [searchParams, setSearchParams] = useSearchParams();
+  const [category,setCategory] = useState([])
+  const initialState = searchParams.getAll("category")
+  
+
+  useEffect(()=>{
+        
+  },[])
+
+  const handleBrand = (e) =>{
+
+  }
+  
+
   return (
     <div className="sidebar-main">
-      <div>FILTERS</div>
       <div className="sidebar-filter">
         <div>
-          <div className="sidebar-filter-title">CATEGORIES</div>
+          <div className="sidebar-filter-title">Rating</div>
           <div className="sidebar-checkox">
-            <span>
-              <input type="checkbox" /> <label>Tshirt</label>
-            </span>
-            <span>
-              <input type="checkbox" /> <label>Tshirt</label>
-            </span>
+          <ResetRating placeholderRating={3} />
           </div>
         </div>
         <hr></hr>
@@ -22,28 +35,28 @@ function Sidebar() {
           <div className="sidebar-filter-title">BRAND</div>
           <div className="sidebar-checkox">
             <span>
-              <input type="checkbox" /> <label>Roadster</label>
+              <input type="checkbox" onChange={handleBrand} /> <label>Roadster</label>
             </span>
             <span>
-              <input type="checkbox" /> <label>Friskers</label>
+              <input type="checkbox" onChange={handleBrand} /> <label>Friskers</label>
             </span>
             <span>
-              <input type="checkbox" /> <label>Tommy Hilfiger</label>
+              <input type="checkbox" onChange={handleBrand} /> <label>Tommy Hilfiger</label>
             </span>
             <span>
-              <input type="checkbox" /> <label>Jack & Jones</label>
+              <input type="checkbox" onChange={handleBrand} /> <label>Jack & Jones</label>
             </span>
             <span>
-              <input type="checkbox" /> <label>HRX by Hrithik</label>
+              <input type="checkbox" onChange={handleBrand} /> <label>HRX by Hrithik</label>
             </span>
             <span>
-              <input type="checkbox" /> <label>U.S. Polo Assn</label>
+              <input type="checkbox" onChange={handleBrand} /> <label>U.S. Polo Assn</label>
             </span>
             <span>
-              <input type="checkbox" /> <label>Puma</label>
+              <input type="checkbox" onChange={handleBrand} /> <label>Puma</label>
             </span>
             <span>
-              <input type="checkbox" /> <label>WROGN</label>
+              <input type="checkbox" onChange={handleBrand} /> <label>WROGN</label>
             </span>
           </div>
         </div>
@@ -67,7 +80,7 @@ function Sidebar() {
         </div>
         <hr></hr>
         <div>
-          <div className="sidebar-filter-title">PRICE</div>
+          <div className="sidebar-filter-title">COLOR</div>
           <div className="sidebar-checkox">
             <span>
               <input type="checkbox" /> <div className="product-color-black"></div> <label>Black</label>

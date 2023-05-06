@@ -10,6 +10,7 @@
 }
 .addProduct{
    margin-top: 15px; 
+   font-size: larger;
 }
 form{
     margin: 10px;
@@ -24,11 +25,12 @@ form{
 
 .form input{
     width: 100%;
-    
+    padding: 10px;
 }
 
 .form select {
     width: 100%;
+    padding: 10px;
 }
 
 .displayproduct{
@@ -61,6 +63,7 @@ form{
 
 .ProductDetail{
    margin-top: 5px;
+   line-height: 30px;
 }
 .headingflex{
   display: flex;

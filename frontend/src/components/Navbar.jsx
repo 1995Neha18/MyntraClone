@@ -31,7 +31,7 @@ export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box w={"100%"} mx={"auto"}
+    <Box w={"100%"} mx={"auto"} 
     style={{ position: "sticky", top: 0, zIndex: 100 }}
     >
       <Flex
