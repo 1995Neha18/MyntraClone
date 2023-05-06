@@ -1,8 +1,7 @@
 .sidebar-main{
-    border: 1px solid #000;
-   width:30%;
+    border: 1px solid var(--chakra-colors-chakra-border-color);
+   width:50%;
    margin: 3px;
-   margin-top: 80px;
 }
 
 .sidebar-main>div{

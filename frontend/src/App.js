@@ -5,11 +5,12 @@ import Admin from './pages/Admin';
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
+import Mens from './pages/mProduct/Mens';
 
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" onReset={true}>
       <Admin/>
       <Navbar />
       <Home />
