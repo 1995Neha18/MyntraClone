@@ -1,23 +1,44 @@
 import React, { useState } from "react";
-import "./Card.css"
+import "./Card.css";
+import Rating from "react-rating";
+import { AiOutlineStar, AiTwotoneStar } from "react-icons/ai";
+import { FiHeart } from "react-icons/fi";
 
-function Card({images}) {
-  const [hidden,setHidden] = useState(".hide")
-  return <div className="mens-card">
-  <div className="mens-card-img">
-   <img height="100%" width="100%" src={images[1]}/>
-  </div>
-  <div className="mens-card-desc">
-  <div className={"mens-card-desc-div"}>
-      <div className="mens-card-desc-title">Roadster</div>
-      <div className="mens-card-desc-det">Print Mock Collar T-shirt</div>
-  </div>
-  <div id="#hide" className={`mens-card-desc-cart`}>
-      <button>WISHLIST</button>
-  </div>
-      <div className="mens-card-desc-price">Rs.1816 <span>(21%OFF)</span></div>
-  </div>
-  </div>;
+function Card({_id, images, strike_price, brand, title, discount, rating }) {
+  const [hidden, setHidden] = useState(".hide");
+  return (
+    <div  className="mens-card">
+      <div className="mens-card-img">
+        <img height="100%" width="100%" src={images[1]} />
+      </div>
+      <div className="mens-card-desc">
+        <div className={"mens-card-desc-div"}>
+          <div className="mens-card-desc-title">{brand}</div>
+          <div className="mens-card-desc-det">{title}</div>
+        </div>
+        <div id="#hide" className={`mens-card-desc-cart`}>
+          <button>
+            {" "}
+            <span>
+              {" "}
+              <FiHeart /> WISHLIST{" "}
+            </span>{" "}
+          </button>
+        </div>
+        <div>
+          <Rating
+            initialRating={rating}
+            emptySymbol={<AiOutlineStar />}
+            fullSymbol={<AiTwotoneStar color="#ff3f6c" />}
+            readonly
+          />
+        </div>
+        <div className="mens-card-desc-price">
+          Rs.{strike_price} <span>{discount}</span>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default Card;
