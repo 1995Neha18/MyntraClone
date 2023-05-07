@@ -1,5 +1,4 @@
 
-import  { useEffect } from "react";
 import React from "react";
 import  { useState } from "react";
 import "./Login.css";
@@ -9,6 +8,7 @@ import { baseUrl } from "../../utils/baseUrl";
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from "react-router-dom";
 import { loginSuccess, loginfaliure } from "../../redux/Authentication/actionType,";
+import { setlocalSt } from "../../utils/localStorage";
 
 
 const signupInitialState = {
@@ -31,19 +31,14 @@ function Login() {
    const [login,setLogin] = useState(false)
    const [SignupData , setSignupData] = useState(signupInitialState)
    const [LoginData , setLoginData] = useState(loginInitialState)
-   const [crud,setCrud] = useState({})
-
-
-   useEffect(() =>{
-    LoginData.role && axios.post(`${baseUrl}users/login`,LoginData)
-      .then((res) =>{setCrud(res.data)})
-   },[LoginData])
-
    const dispatch = useDispatch()
-
-   const isAuth = useSelector((store) =>store.authReducer.isAuth)
-
    const navigate = useNavigate()
+
+
+   const isAuth = useSelector((store) =>store.authReducer)
+
+   console.log(isAuth,"******")
+    
 
    const handleloginSwitch = () =>{
          setSignup(true)
@@ -59,8 +54,12 @@ function Login() {
    const handleSignup = (e) =>{
         e.preventDefault()
         SignupData.role && axios.post(`${baseUrl}users/register`,SignupData)
-       .then((res) =>{toast.success("Registered Successfully !")})
-       .catch((err) =>{toast.error("Failed, try again")})
+       .then((res) =>{
+        toast.success("Registered Successfully !")
+      })
+       .catch((err) =>{
+        toast.error("Failed, try again")
+      })
    }
 
 
@@ -79,24 +78,21 @@ function Login() {
    const handleLogin = async(e) =>{
     e.preventDefault()
 
-    let arr = crud.filter((el) =>{
-      if(el.email==LoginData.email && el.password==LoginData.password){
-        dispatch(loginSuccess())
-      return {email:el.email,password:el.password}
-     }
+    LoginData.role && axios.post(`${baseUrl}users/login`,LoginData)
+    .then((res) =>{
+      toast.success("Logged Successfully !")
+      dispatch(loginSuccess(res.data))
+      setlocalSt("isAuth","true")
+      setlocalSt("token",res.data.token)
+      LoginData.role === "User" ? navigate(`/`):navigate(`/admin`);
     })
-    
-    if(arr.length>0){
-      toast.success("Login Successfully !!")
-      arr[0].role=="user"?navigate("/"):navigate("/admin");
-    }else{
+    .catch((err) =>{
+      toast.error("Failed, try again")
       dispatch(loginfaliure())
-       toast.error("Credentials wrong");
-    }
-
+    })
    }
   
- 
+
 
   return (
     
