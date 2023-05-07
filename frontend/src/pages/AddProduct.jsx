@@ -37,6 +37,7 @@ function AddProduct() {
          return res.json()
       }).then((res)=>{
          console.log(res)
+         alert("Product is Added")
          setdata(initial)
       })
       .catch((err)=>{
