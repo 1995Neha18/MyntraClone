@@ -1,6 +1,8 @@
 import axios from "axios"
 import { baseUrl } from "../../utils/baseUrl"
 import { productFaliureAction, productRequestAction, productSuccessAction, wproductFaliureAction, wproductRequestAction, wproductSuccessAction } from "./action"
+import { getlocalSt } from "../../utils/localStorage"
+
 
 //
 export const GET_PRODUCTS_REQUEST = "GET_PRODUCTS_REQUEST"
@@ -29,7 +31,9 @@ export const getProducts = (obj) => (dispatch) =>{
                 category:"Mens",
                  ...obj
             },
-            headers: `Bearer ${localStorage.getItem('token')}`
+
+            headers:`bearer ${getlocalSt("token") }`
+
         }),
         axios.get(`${baseUrl}products/pagination`,{
             params:{
@@ -37,7 +41,9 @@ export const getProducts = (obj) => (dispatch) =>{
               limit:5,
               page:obj.page
             },
-            headers: `Bearer ${localStorage.getItem('token')}`
+
+            headers:`bearer ${getlocalSt("token") }`
+
         })
       ])
       .then(axios.spread((res1, res2) => {
@@ -65,7 +71,9 @@ export const wgetProducts = (obj) => (dispatch) =>{
                 category:"Womens",
                  ...obj
             },
-            headers: `Bearer ${localStorage.getItem('token')}`
+
+            headers:`bearer ${getlocalSt("token") }`
+
         }),
         axios.get(`${baseUrl}products/pagination`,{
             params:{
@@ -73,7 +81,9 @@ export const wgetProducts = (obj) => (dispatch) =>{
               limit:5,
               page:obj.page
             },
-            headers: `Bearer ${localStorage.getItem('token')}`
+
+            headers:`bearer ${getlocalSt("token") }`
+
         })
       ])
       .then(axios.spread((res1, res2) => {

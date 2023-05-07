@@ -2,8 +2,8 @@ import { LOGIN_FAILURE, LOGIN_SUCCESS } from "./action"
 
 
 
-export const loginSuccess = () =>{
-    return {type:LOGIN_SUCCESS}
+export const loginSuccess = (payload) =>{
+    return {type:LOGIN_SUCCESS,payload}
 }
 
 export const loginfaliure = () =>{
