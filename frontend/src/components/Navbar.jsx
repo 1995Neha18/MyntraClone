@@ -14,6 +14,7 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
+  Image,
 //   HStack,
 } from "@chakra-ui/react";
 import {
@@ -26,9 +27,19 @@ import { RiHandbagLine } from "react-icons/ri";
 import { HiOutlineHeart } from "react-icons/hi";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
+import Searchbar from "./Searchbar";
+
+
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
+  // const Navigate = useNavigate();
+  // const cartData = JSON.parse(localStorage.getItem("cartData")) || [];
+  // const dispatch = useDispatch();
+
+  //   useEffect(()=>{
+  //   dispatch();
+  // },[dispatch])
 
   return (
     <Box w={"100%"} mx={"auto"} 
@@ -65,15 +76,22 @@ export default function Navbar() {
             fontFamily={"heading"}
             color={useColorModeValue("gray.800", "white")}
           >
-            <img src="Myntra.png" alt="logo" width={"23%"} 
+            <NavLink to="/" >
+            <Image
+            src="Myntra.png" alt="logo" width={"60%"} 
             ml="2rem"
+            mt={"5px"}
+            // onClick={() => Navigate("/")}
             />
+            </NavLink>
           </Text>
 
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
             <DesktopNav />
           </Flex>
         </Flex>
+
+        <Searchbar/>
 
         <Stack
           flex={{ base: 1, md: 0 }}
@@ -82,7 +100,7 @@ export default function Navbar() {
           spacing={2}
         >
            
-
+          <NavLink to="/login" >
           <Button
             display={"flex"}
             flexDirection={"column"}
@@ -99,6 +117,7 @@ export default function Navbar() {
             />
             <Text>Profile</Text>
           </Button>
+          </NavLink>
      
           <Button
             display={"flex"}
@@ -116,6 +135,8 @@ export default function Navbar() {
             />
             <Text>Wishlist</Text>
           </Button>
+
+          <NavLink to="/cart" >
           <Button
             display={"flex"}
             flexDirection={"column"}
@@ -132,6 +153,18 @@ export default function Navbar() {
             />
             <Text>Bag</Text>
           </Button>
+          </NavLink>
+
+          {/* <Text
+                bg={"#BB1679"}
+                color={"white"}
+                paddingX={1.5}
+                borderRadius={"50%"}
+                fontSize={'xs'}
+              >
+                {cartData.length}
+              </Text> */}
+
         </Stack>
       </Flex>
 
@@ -150,7 +183,7 @@ const DesktopNav = () => {
   return (
     <Stack direction={"row"} spacing={6}
     mr={"30rem"}
-    mt={"1rem"}
+    mt={"10px"}
     >
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}

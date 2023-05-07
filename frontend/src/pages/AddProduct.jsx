@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import styled from "../Css/AddProduct.modules.css"
 
 const initial = {
-  name : "",
   title : "",
   size : "",
   strike_price:"",
    brand : "",
-  discount : "",
+   discount_price : "",
   category : "",
   images : "",
+  rating : "",
   userID:""
 }
 
@@ -37,7 +37,8 @@ function AddProduct() {
          return res.json()
       }).then((res)=>{
          console.log(res)
-         // setdata(initial)
+         alert("Product is Added")
+         setdata(initial)
       })
       .catch((err)=>{
          console.log(err)
@@ -45,7 +46,7 @@ function AddProduct() {
       
    }
    
-   const {name,title,size,strike_price,brand,discount,category,images,userID} = data
+   const {name,title,size,strike_price,brand,discount_price,category,images,rating,userID} = data
   return (
      <div>
         <div className='headingflex'>
@@ -56,18 +57,18 @@ function AddProduct() {
       <div className="mainaddproduct">   
         <div className="form">
          <form action="" onSubmit={handleSubmit}>
-            <label>Name : </label>
-            <input type="text" placeholder='Product Name' onChange={handleChange} name="name" value={name}/>
+            <label>Title : </label>
+            <input type="text" placeholder='Product Name' onChange={handleChange} name="title" value={title}/>
             <label>Price : </label>
             <input type="text" placeholder='Price ₹' onChange={handleChange} name="strike_price" value={strike_price}/>
-            <label>Discount : </label>
-            <input type="text" placeholder='Discount' onChange={handleChange} name="discount" value={discount}/>
+            <label>Discount Price : </label>
+            <input type="text" placeholder='Discount' onChange={handleChange} name="discount_price" value={discount_price}/>
             <label>Size : </label>
             <input type="text"  placeholder='Size' onChange={handleChange} name="size" value={size}/>
             <label>Image : </label>
             <input type="text" placeholder='Image URL' onChange={handleChange} name="images" value={images}/>
-            <label>Title : </label>
-            <input type="text" placeholder='Title' onChange={handleChange} name="title" value={title}/>
+            <label>Rating : </label>
+            <input type="text" placeholder='Title' onChange={handleChange} name="rating" value={rating}/>
             <label>Category : </label>
             <select name="category" id="" onChange={handleChange} value={category}>
                <option value="">Select Category</option>
@@ -80,20 +81,20 @@ function AddProduct() {
                <option value="ZARA">ZARA</option>
                <option value="Calvin Klein">Calvin Klein</option>
             </select>
-            <input type="submit" />
+            <input className='submitbutton' type="submit" />
          </form>
       </div>
       <div className="displayproduct">
           {<>
           <img src={images} alt={images} />
           <div className='ProductDetail'>
-          <h6> <b>Name:</b> {name} </h6>
+          <h6> <b>Title:</b> {title} </h6>
           <h6> <b>Price:</b> {strike_price}</h6>
           <h6> <b>Cat :</b> {category}</h6>
-          <h6> <b>Discount:</b> {discount} </h6>
+          <h6> <b>Discount:</b> {discount_price} </h6>
           <h6> <b>Size :</b> {size}</h6>
           <h6> <b>Brand :</b> {brand}</h6>
-          <h6> <b>Title :</b> {title}</h6>
+          <h6> <b>Rating :</b> {rating}</h6>
           </div>  
           </>}
       </div>  
