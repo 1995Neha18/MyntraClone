@@ -28,14 +28,16 @@ export const getProducts = (obj) => (dispatch) =>{
             params:{
                 category:"Mens",
                  ...obj
-            }
+            },
+            headers: `Bearer ${localStorage.getItem('token')}`
         }),
         axios.get(`${baseUrl}products/pagination`,{
             params:{
               category:"Mens",
               limit:5,
               page:obj.page
-            }
+            },
+            headers: `Bearer ${localStorage.getItem('token')}`
         })
       ])
       .then(axios.spread((res1, res2) => {
@@ -62,14 +64,16 @@ export const wgetProducts = (obj) => (dispatch) =>{
             params:{
                 category:"Womens",
                  ...obj
-            }
+            },
+            headers: `Bearer ${localStorage.getItem('token')}`
         }),
         axios.get(`${baseUrl}products/pagination`,{
             params:{
               category:"Womens",
               limit:5,
               page:obj.page
-            }
+            },
+            headers: `Bearer ${localStorage.getItem('token')}`
         })
       ])
       .then(axios.spread((res1, res2) => {

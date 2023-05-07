@@ -18,8 +18,8 @@ const SingleProductPage = ({prod}) => {
     const fetchSingleProduct = async()=>{
         await axios.get(`https://urban-backend.onrender.com/products/${id}`)
         .then((res)=>{
-            setSingleProduct(res)
-            setPoster(res?.image[0])
+            setSingleProduct(res.data)
+            setPoster(res?.data.image[0])
         })
         .catch((err)=>{
             console.log(err)
@@ -36,7 +36,7 @@ const SingleProductPage = ({prod}) => {
 
     const AddtoBag = async () => {
         await axios
-          .post(`https://urban-backend.onrender.com/cart/`, singleProduct)
+          .post(`https://urban-backend.onrender.com/cart/add`, singleProduct)
           .then((res) => {
             toast({
               title: 'Successfully Added.',
