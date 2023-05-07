@@ -10,7 +10,7 @@ import {
    TableCaption,
    TableContainer,
  } from '@chakra-ui/react'
- const initial = {
+const initial = {
    username : "",
    email : "",
    password : "",
@@ -36,8 +36,13 @@ function User() {
       }).then((res)=>{
          return res.json()
       }).then((res)=>{
-         alert("USer is Added")
-         console.log(res)
+         
+         if(res.msg == "Email already exists"){
+            alert("User is Already exist")
+         }else{
+            alert("USer is Added")
+         }
+         setdata(initial)
       }).catch((err)=>{
          console.log(err)
       })
@@ -49,7 +54,10 @@ function User() {
    }
    const {username,email,password,age,city}=data
   return (
+   <div>
+      <h1 >Add users</h1>
     <div className="form">
+      
     <form action="" onSubmit={handleSubmit}>
        <label>Name : </label>
        <input type="text" placeholder='User Name' onChange={handleChange} name="username" value={username} />
@@ -60,10 +68,11 @@ function User() {
         <label>City : </label>
         <input type="text"  placeholder='City' onChange={handleChange} name='city' value={city}  />
         <label>Age : </label>
-        <input type="text" placeholder='Profile URL' onChange={handleChange} name='age' value={age}  />
+        <input type="text" placeholder='Age' onChange={handleChange} name='age' value={age}  />
         <input className='submitbutton' type="submit" />
     </form>
-    </div>   
+    </div> 
+    </div>    
   )
 }
 

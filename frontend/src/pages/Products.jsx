@@ -11,7 +11,7 @@ function Products({setpage,setedit}) {
    const {id} = useParams()
    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NDU1MDQ1NThjZGYwYWMzOTZmYTRhMDciLCJpYXQiOjE2ODMyOTMzMjl9.sOUFvK2toP3ZmD8tBftPhAeYkfOEZCF5Tb_MOKdqRIA"
    useEffect(()=>{
-    fetch("https://urban-backend.onrender.com/products",{
+    fetch("https://urban-backend.onrender.com/admin",{
          method : "GET",
          headers : {
             "Content-type" : "application/json",
@@ -31,12 +31,9 @@ function Products({setpage,setedit}) {
       })   
   },[change])
   
-  const handleedit = (id)=>{
-    
-    
-  }
-  const handledelete = ()=>{
-    fetch(`https://urban-backend.onrender.com/products/${id}`,{
+  
+  const handledelete = (id)=>{
+    fetch(`https://urban-backend.onrender.com/admin/${id}`,{
       method : "DELETE",
       headers : {
         "Content-type" : "application/json",
@@ -45,7 +42,8 @@ function Products({setpage,setedit}) {
     }).then((res)=>{
       return res.json()
     }).then((res)=>{
-      console.log(res)
+      
+      setchange(!change)
     }).catch((err)=>{
       console.log(err)
     })
@@ -60,8 +58,8 @@ function Products({setpage,setedit}) {
             <p>Price : {el.strike_price}</p>
             <p>Brand : {el.brand}</p>
             <div className="button">
-            <Link to={`/admin/delete/${el._id}`}><button id='deletebutton' onClick={()=>handledelete(el.id)}><AiFillDelete/></button></Link>
-              <Link to={`/admin/${el.id}`}><button id='editbutton'><AiOutlineEdit/></button></Link>
+             <button id='deletebutton' onClick={()=>handledelete(el._id)}><AiFillDelete/></button>
+              <Link to={`/admin/${el._id}`}><button id='editbutton'><AiOutlineEdit/></button></Link>
             </div> 
         </div>
        ))}
