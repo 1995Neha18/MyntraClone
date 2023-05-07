@@ -1,23 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Chart from "@mindinventory/result-doughnut-chart";
 
 export 
 
 function Dashboard() {
+  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NDU1MDQ1NThjZGYwYWMzOTZmYTRhMDciLCJpYXQiOjE2ODMzODIyMTZ9.4EVYyMZ6R3_M99Te9FWmdeAMbtszSm7AtgnZbRLEjLI"
+  const [data,setdata] = useState("")
+
+  useEffect(()=>{
+    fetch(`https://urban-backend.onrender.com/products`,{
+       method : "GET",
+       headers : {
+          "Content-type" : "application/json",
+          "Authorization" : `Bearer ${token}`
+       }
+    }).then((res)=>{
+       return res.json()
+    }).then((res)=>{
+       setdata(res)
+    }).catch((err)=>{
+       console.log(err)
+    })
+  },[])
   const apiData = {
     firstChartDataSetLabel: "%",
     secondChartDataSetLabel: "%",
     firstChart: [
       {
-        name: "Order",
+        name: "Total Products",
         backgroundColor: "rgba(255, 99, 132, 0.2)",
         borderColor: "rgba(255, 99, 132, 1)",
-        data: 30,
+        data: data.length,
         secondChartData: [5, 15, 10],
         secondChartCenterText: "30%",
       },
       {
-        name: "First class",
+        name: "Cart",
         backgroundColor: "rgba(54, 162, 235, 0.2)",
         borderColor: "rgba(54, 162, 235, 1)",
         data: 15,
@@ -25,7 +43,7 @@ function Dashboard() {
         secondChartCenterText: "15%",
       },
       {
-        name: "Second class",
+        name: "Cancelled Item",
         backgroundColor: "rgba(75, 192, 192, 0.2)",
         borderColor: "rgba(75, 192, 192, 1)",
         data: 35,
@@ -58,47 +76,47 @@ function Dashboard() {
         borderColor: "rgba(75, 192, 192, 1)",
       },
     ],
-    firstChartTipTitle: "Selected Grade:",
-    secondChartTipTitle: "Result summary:",
+    firstChartTipTitle: "Order Summary:",
+    secondChartTipTitle: "Result:",
     tipData: [
       {
         firstChartTip: "Distinction grade",
-        secondChartTip: "30% students pass with distinction grade.",
+        secondChartTip: "30% Products are ordered",
       },
       {
         firstChartTip: "First grade",
-        secondChartTip: "15% students pass with first grade.",
+        secondChartTip: "15% order is cancelled ",
       },
       {
         firstChartTip: "Second grade",
-        secondChartTip: "35% students pass with second grade.",
+        secondChartTip: "35% order failed",
       },
       {
         firstChartTip: "Fail",
-        secondChartTip: "20% students fail.",
+        secondChartTip: "20% cart products",
       },
     ],
     labelExtraData: "Result",
     extraData: [
       {
         grade: "Distinction",
-        summary: "30% students pass with distinction grade in 2022.",
-        date: "January 12, 2022", //also able to append key & value
+        summary: "30% ",
+        date: Date(), //also able to append key & value
       },
       {
         grade: "First",
-        summary: "15% students pass with first grade in 2022.",
-        date: "January 27, 2022",
+        summary: "15% ",
+        date: Date(),
       },
       {
         grade: "Second",
-        summary: "35% students pass with second grade in 2022.",
-        date: "January 19,2022 ",
+        summary: "35% ",
+        date: Date(),
       },
       {
         grade: "Fail",
-        summary: "20% students fail in 2022.",
-        date: "January 8,2022  ",
+        summary: "20% ",
+        date: Date(),
       },
     ],
   };
