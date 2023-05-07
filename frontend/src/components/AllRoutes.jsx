@@ -7,6 +7,7 @@ import Mens from '../pages/mProduct/Mens';
 import Womens from '../pages/wProducts/Womens';
 import Login from '../pages/Login/Login';
 
+
 const AllRoutes = () => {
   return (
     <Routes>
@@ -16,6 +17,7 @@ const AllRoutes = () => {
         <Route path="/Login" element={<Login/>} />
         <Route  path="/admin" element ={<Admin/>}/>
         <Route path='admin/:id' element= {<Edit/>}></Route>
+        
     </Routes>
   )
 }
