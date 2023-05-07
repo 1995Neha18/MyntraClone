@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import "./Card.css";
+import "../mProduct/Card.css";
 import Rating from "react-rating";
 import { AiOutlineStar, AiTwotoneStar } from "react-icons/ai";
 import { FiHeart } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 
 function Card({_id, images, strike_price, brand, title, discount, rating=5,r }) {
-  const [hidden, setHidden] = useState(".hide");
+   
   const navigate = useNavigate()
 
 
@@ -21,7 +21,7 @@ function Card({_id, images, strike_price, brand, title, discount, rating=5,r }) 
           <div className="mens-card-desc-det">{title}</div>
         </div>
         <div id="#hide" className={`mens-card-desc-cart`}>
-          <button onClick={()=>navigate(`/Mens/${_id}`)}>
+          <button onClick={()=>navigate(`/Womens/${_id}`)}>
             {" "}
             <span>
               {" "}
