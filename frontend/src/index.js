@@ -17,13 +17,13 @@ import Mens from "./pages/mProduct/Mens";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-  <div>
-    <ChakraProvider resetCSS={false}>
+  {/* <div> */}
+    <ChakraProvider >
     <Provider store={store}>
       <App />
       </Provider>
     </ChakraProvider>
-  </div>
+  {/* </div> */}
   </BrowserRouter>
 );
 
