@@ -31,7 +31,9 @@ export const getProducts = (obj) => (dispatch) =>{
                 category:"Mens",
                  ...obj
             },
+
             headers:`bearer ${getlocalSt("token") }`
+
         }),
         axios.get(`${baseUrl}products/pagination`,{
             params:{
@@ -39,7 +41,9 @@ export const getProducts = (obj) => (dispatch) =>{
               limit:5,
               page:obj.page
             },
+
             headers:`bearer ${getlocalSt("token") }`
+
         })
       ])
       .then(axios.spread((res1, res2) => {
@@ -67,7 +71,9 @@ export const wgetProducts = (obj) => (dispatch) =>{
                 category:"Womens",
                  ...obj
             },
+
             headers:`bearer ${getlocalSt("token") }`
+
         }),
         axios.get(`${baseUrl}products/pagination`,{
             params:{
@@ -75,7 +81,9 @@ export const wgetProducts = (obj) => (dispatch) =>{
               limit:5,
               page:obj.page
             },
+
             headers:`bearer ${getlocalSt("token") }`
+
         })
       ])
       .then(axios.spread((res1, res2) => {
