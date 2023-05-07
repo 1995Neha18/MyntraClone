@@ -3,16 +3,29 @@ import React, { useEffect, useState } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
 
 function Edit() {
-  const [data,setdata] = useState([])
+  const [data,setdata] = useState("")
+  const [newdata,setnew] = useState("")
   const navigate = useNavigate()
   const {id} = useParams()
   
+  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NDU1MDQ1NThjZGYwYWMzOTZmYTRhMDciLCJpYXQiOjE2ODMzODIyMTZ9.4EVYyMZ6R3_M99Te9FWmdeAMbtszSm7AtgnZbRLEjLI"
+
+  
   useEffect(()=>{
-    axios.get(`https://reqres.in/api/users/${id}`)
-    .then((res)=>{
-      setdata(res.data.data)
-    })
-  },[])
+   fetch(`https://urban-backend.onrender.com/products/${id}`,{
+      headers : {
+         "Authorization" : `Bearer ${token}`
+      }
+   })
+   .then((res)=>{
+      return res.json()
+   }).then((res)=>{
+      setdata(res)
+   }).catch((err)=>{
+      console.log(err)
+   })
+   },[])
+  
  
   const handleChange = (e)=>{
      const [name,value] = e.target
@@ -20,10 +33,26 @@ function Edit() {
   }
   
   const handleSubmit = ()=>{
-     alert("Product is Edited")
+   fetch(`https://urban-backend.onrender.com/products/${id}`,{
+      method : "PATCH",
+      headers : {
+         "Content-type" : "application/json",
+         "Authorization" : `Bearer ${token}`
+      },
+      
+   })
+   .then((res)=>{
+      return res.json()
+   })
+   .then((res)=>{
+      console.log(res)
+      setdata(res)
+   }).catch((err)=>{
+      console.log(err)
+   })
      navigate("/admin")
   }
-   const {avatar,email,first_name,last_name} = data
+  const {title,strike_price,size,images,brand,category,rating} = data
   return (
     <div>
         <div className='headingflex'>
@@ -34,16 +63,16 @@ function Edit() {
       <div className="mainaddproduct">   
         <div className="form">
          <form action="" onSubmit={handleSubmit}>
-            <label>Name : </label>
-            <input type="text" placeholder='Product Name' onChange={handleChange} name="Name" value={email} />
+            <label>Title : </label>
+            <input type="text" placeholder='Product Name' onChange={handleChange} name="title" value={title} />
             <label>Price : </label>
-            <input type="text" placeholder='Price ₹' onChange={handleChange} name="Price" />
+            <input type="text" placeholder='Price ₹' onChange={handleChange} name="strike_price" value={strike_price} />
             <label>Size : </label>
-            <input type="text"  placeholder='Size' onChange={handleChange} name="Size" />
+            <input type="text"  placeholder='Size' onChange={handleChange} name="size" value={size} />
             <label>Image : </label>
-            <input type="text" placeholder='Image URL' onChange={handleChange} name="ImageURL"  />
-            <label>Description : </label>
-            <input type="text" placeholder='Description' onChange={handleChange} name="Description"  />
+            <input type="text" placeholder='Image URL' onChange={handleChange} name="images" value={images[0]}  />
+            <label>Rating : </label>
+            <input type="text" placeholder='Description' onChange={handleChange} name="rating" value={rating}  />
             <label>Category : </label>
             <select name="Category" id="" onChange={handleChange} >
                <option value="">Select Category</option>
@@ -56,19 +85,19 @@ function Edit() {
                <option value="ZARA">ZARA</option>
                <option value="Calvin Klein">Calvin Klein</option>
             </select>
-            <input type="submit" />
+            <input  className='submitbutton' type="submit" />
          </form>
       </div>
       <div className="displayproduct">
           {<>
-          <img  alt="{ImageURL}" />
+          <img src={images[0]} alt="{ImageURL}" />
           <div className='ProductDetail'>
-          <h6> <b>Name:</b>  </h6>
-          <h6> <b>Price:</b> </h6>
-          <h6> <b>Cat :</b> </h6>
-          <h6> <b>Size :</b> </h6>
-          <h6> <b>Brand :</b> </h6>
-          <h6> <b>Des :</b> </h6>
+          <h6> <b>Title:</b> {title} </h6>
+          <h6> <b>Price:</b> {strike_price} </h6>
+          <h6> <b>Cat :</b> {category}</h6>
+          <h6> <b>Size :</b> {size} </h6>
+          <h6> <b>Brand :</b> {brand} </h6>
+          <h6> <b>Rating :</b> {rating} </h6>
           </div>  
           </>}
       </div>  

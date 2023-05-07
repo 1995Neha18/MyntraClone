@@ -10,14 +10,14 @@ import Mens from './pages/mProduct/Mens';
 function App() {
   return (
     <div className="App" onReset={true}>
-      <Admin/>
+      {/* <Admin/> */}
       <Navbar />
       <AllRoutes/>
-      <Home />
+      {/* <Home /> */}
 
      
 
-      <Footer />
+      {/* <Footer /> */}
 
     </div>
   );
