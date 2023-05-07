@@ -92,7 +92,7 @@ const SingleProductPage = ({prod}) => {
             border={"0px solid red"}
           >
             <Image
-              src={"https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/19888438/2022/9/22/591e68d2-7552-4e8f-a51d-63b6b028a4431663840257994-HELLCAT-Boys-Set-Of-2-Blue--White-Printed-Hooded-Sweatshirt--7.jpg"}
+              src={poster}
               borderRadius={20}
               m={"auto"}
               w={"100%"}
