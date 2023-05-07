@@ -4,16 +4,16 @@ import Home from "./pages/Home";
 import AllRoutes from './components/AllRoutes';
 import Footer from "./components/Footer";
 import Mens from './pages/mProduct/Mens';
+import Admin from "./pages/Admin";
+import Womens from "./pages/wProducts/Womens";
 
 
 function App() {
   return (
     <div className="App" onReset={true}>
-      <Admin/>
       <Navbar />
       <AllRoutes/>
-      <Home />
-      <Footer />
+      <Footer /> 
     </div>
   );
 }

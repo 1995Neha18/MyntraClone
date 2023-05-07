@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
-import "./Mens.css"
-import Sidebar from "./Sidebar";
+import "../mProduct/Mens.css"
 import Card from "./Card";
 import {useDispatch, useSelector} from "react-redux"
-import { getProducts } from "../../redux/mReducer/actionType";
+import { wgetProducts } from "../../redux/mReducer/actionType";
 import { useLocation, useSearchParams } from "react-router-dom";
-import mReducer from "../../redux/mReducer/mReducer";
+import Sidebar from "./Sidebar";
 
 
-function Mens() {
+function Womens() {
 
  const dispatch = useDispatch()
  
@@ -30,12 +29,12 @@ function Mens() {
  }
 
  useEffect(()=>{
-   dispatch(getProducts(obj))
+   dispatch(wgetProducts(obj))
  },[location.search,page])
 
- const {mProduct} = useSelector((store)=>store.mReducer)
+ const {mProduct} = useSelector((store)=>store.wReducer)
 
-  console.log(mProduct)
+  console.log(page)
 
  const handleOrder =(e) =>{
    let value = e.target.value
@@ -47,7 +46,7 @@ function Mens() {
   return <div className="mens-main">
   <div className="mheader">
    <div className="mens-breadcrum"> Home / Clothing / Men T-Shirts </div>
-   <div className="mens-itemno">Mens T-Shirt <span>- 234 items</span></div>
+   <div className="mens-itemno">Womens T-Shirt <span>- 234 items</span></div>
    <div className="mens-sort">
         <div>FILTERS</div>
         <div><select onChange={handleOrder} >
@@ -82,4 +81,4 @@ function Mens() {
   </div>;
 }
 
-export default Mens;
+export default Womens;
