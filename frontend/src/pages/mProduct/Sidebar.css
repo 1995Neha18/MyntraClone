@@ -1,0 +1,131 @@
+.sidebar-main{
+    border: 1px solid var(--chakra-colors-chakra-border-color);
+   width:50%;
+   margin: 3px;
+}
+
+.sidebar-main>div{
+    font-weight: 700; 
+    padding: 8px;
+}
+
+.sidebar-filter-title{
+    font-weight: 600;
+    padding: 8px;
+}
+
+.sidebar-checkox{
+    display: grid;
+    grid-template-rows: repeat(1fr,1);
+    grid-template-columns: repeat(1fr,1);
+    justify-content: flex-start;
+    padding: 0;
+   text-align: center;
+}
+
+.sidebar-checkox>span{
+   display: flex;
+   padding: 4px;
+   align-items: center;
+   font-weight: 350;
+   font-size:14px;
+}
+
+.sidebar-checkox>span>label{
+  padding: 4px;
+ }
+
+
+
+.product-color-black{
+    height: 13px;
+    width: 13px;
+    border: 1px solid rgb(91, 87, 87);
+    border-radius: 50%;
+    background-color: black;
+    margin: 3px;
+}
+
+.product-color-blue{
+    height: 13px;
+    width: 13px;
+    border: 1px solid rgb(91, 87, 87);
+    border-radius: 50%;
+    background-color: blue;
+    margin: 3px;
+}
+
+.product-color-white{
+    height: 13px;
+    width: 13px;
+    border: 1px solid rgb(91, 87, 87);
+    border-radius: 50%;
+    background-color: white;
+    margin: 3px;
+}
+
+
+.product-color-navyb{
+    height: 13px;
+    width: 13px;
+    border: 1px solid rgb(91, 87, 87);
+    border-radius: 50%;
+    background-color: 	rgb(0,0,128);
+    margin: 3px;
+}
+
+.product-color-green{
+    height: 13px;
+    width: 13px;
+    border: 1px solid rgb(91, 87, 87);
+    border-radius: 50%;
+    background-color: green;
+    margin: 3px;
+}
+
+.product-color-grey{
+    height: 13px;
+    width: 13px;
+    border: 1px solid rgb(91, 87, 87);
+    border-radius: 50%;
+    background-color: grey;
+    margin: 3px;
+}
+
+.product-color-red{
+    height: 13px;
+    width: 13px;
+    border: 1px solid rgb(91, 87, 87);
+    border-radius: 50%;
+    background-color: red;
+    margin: 3px;
+}
+
+
+@media only screen and (max-width: 600px) {
+   
+    .sidebar-main{
+       width:70%;
+    }
+
+  }
+
+
+
+@media only screen and (max-width: 800px) and (min-width: 600px) {
+   
+    .sidebar-main{
+       width:50%;
+    }
+
+  }
+
+
+  @media only screen and (max-width: 1000px) and (min-width: 800px) {
+   
+    .sidebar-main{
+       width:40%;
+    }
+
+  }
+

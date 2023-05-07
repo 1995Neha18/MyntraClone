@@ -1,0 +1,113 @@
+.mens-main {
+}
+
+.mheader {
+  
+  width: 100%;
+  background: white;
+}
+
+.mens-breadcrum {
+  /* border: 1px solid #cc1515; */
+  padding: 8px;
+}
+
+.mens-itemno {
+  /* border: 1px solid #000; */
+  font-weight: 700;
+  color: #282c3f;
+  padding: 8px;
+}
+
+.mens-sort{
+    width: 98%;
+    padding: 3px;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mens-sort>div>select                         {
+   padding: 10px 25px 10px 25px;
+}
+
+
+.mens-itemno > span {
+  font-weight: 200;
+}
+
+.mens-comps {
+  display: flex;
+}
+
+.card-grid {
+  /* border: 1px solid #091ce5; */
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 25px;
+  padding: 10px;
+  scroll-behavior: smooth;
+  position: -webkit-sticky;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+
+.mens-pagination{
+  /* border: 1px solid #000; */
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+ 
+}
+
+.mens-pagination>button{
+ margin: 5px;
+ background: transparent;
+ border: none;
+ font-size: large;
+ font-weight:540;
+}
+
+.mens-pagination>button:hover{
+background:#ff3f6c;
+ }
+
+@media only screen and (max-width: 600px) {
+   
+    .card-grid {
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+  }
+
+
+
+@media only screen and (max-width: 800px) and (min-width: 600px) {
+   
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+       
+      }
+
+  }
+
+
+  @media only screen and (max-width: 1000px) and (min-width: 800px) {
+   
+    .card-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+  }
+
+
+  @media only screen and  (max-width: 1200px) and (min-width: 1000px) {
+   
+    .card-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+  }
