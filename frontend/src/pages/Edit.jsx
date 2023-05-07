@@ -1,29 +1,72 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
+const initial = {
+   title : "",
+   size : "",
+   strike_price:"",
+   brand : "",
+   discount_price : "",
+   category : "",
+   images : "",
+   rating : "",
+   userID:""
+ }
 
 function Edit() {
-  const [data,setdata] = useState([])
+  const [data,setdata] = useState(initial)
+  const [titled ,settitle] = useState("")
   const navigate = useNavigate()
   const {id} = useParams()
   
-  useEffect(()=>{
-    axios.get(`https://reqres.in/api/users/${id}`)
-    .then((res)=>{
-      setdata(res.data.data)
-    })
-  },[])
+  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NDU1MDQ1NThjZGYwYWMzOTZmYTRhMDciLCJpYXQiOjE2ODMzODIyMTZ9.4EVYyMZ6R3_M99Te9FWmdeAMbtszSm7AtgnZbRLEjLI"
+   useEffect(()=>{
+      fetch(`https://urban-backend.onrender.com/admin/search/${id}`,{
+         method : "GET",
+         headers : {
+           "Content-type" : "application/json",
+           "Authorization" : `Bearer ${token}`
+         }
+       }).then((res)=>{
+         return res.json()
+       }).then((res)=>{
+         console.log(res)
+         settitle(res)
+       }).catch((err)=>{
+         console.log(err)
+       })
+   },[])
  
   const handleChange = (e)=>{
-     const [name,value] = e.target
-     setdata((prev)=>[{...prev,[name] : value}])
+      const {name,value} = e.target
+        
+         setdata({...titled,[name]:value})
+      
+      
   }
   
-  const handleSubmit = ()=>{
-     alert("Product is Edited")
-     navigate("/admin")
+ 
+  const handleSubmit = (e)=>{
+    e.preventDefault()
+    fetch(`https://urban-backend.onrender.com/admin/${id}`,{
+      method : "PATCH",
+      headers : {
+         "Content-type" : "application/json",
+         "Authorization" : `Bearer ${token}`
+      },
+      body: JSON.stringify(data)
+      }).then((res)=>{
+         return res.json()
+      }).then((res)=>{
+         console.log(res)
+         navigate("/admin")
+      }).catch((err)=>{
+         console.log(err)
+      })
+      
+    
   }
-   const {avatar,email,first_name,last_name} = data
+  const {title,strike_price,size,images,brand,category,rating} = data
   return (
     <div>
         <div className='headingflex'>
@@ -34,41 +77,42 @@ function Edit() {
       <div className="mainaddproduct">   
         <div className="form">
          <form action="" onSubmit={handleSubmit}>
-            <label>Name : </label>
-            <input type="text" placeholder='Product Name' onChange={handleChange} name="Name" value={email} />
+            <label>Title : </label>
+            <input type="text" placeholder='Product Name' name="title" onChange={handleChange} value={title}    />
             <label>Price : </label>
-            <input type="text" placeholder='Price ₹' onChange={handleChange} name="Price" />
+            <input type="text" placeholder='Price ₹' onChange={handleChange} name="strike_price" value={strike_price} />
             <label>Size : </label>
-            <input type="text"  placeholder='Size' onChange={handleChange} name="Size" />
+            <input type="text"  placeholder='Size' onChange={handleChange} name="size"  value={size}/>
             <label>Image : </label>
-            <input type="text" placeholder='Image URL' onChange={handleChange} name="ImageURL"  />
-            <label>Description : </label>
-            <input type="text" placeholder='Description' onChange={handleChange} name="Description"  />
+            <input type="text" placeholder='Image URL' onChange={handleChange} name="images"  value={images} />
+            <label>Rating : </label>
+            <input type="text" placeholder='Rating' onChange={handleChange} name="rating" value={rating} />
             <label>Category : </label>
-            <select name="Category" id="" onChange={handleChange} >
+            <select name="category" id="" onChange={handleChange} value={category} >
                <option value="">Select Category</option>
                <option value="Tshirt">Tshirt</option>
                <option value="Jacket">Jacket</option>
             </select>
             <label>Brand : </label>
-            <select name="Brand" id="" onChange={handleChange} >
+            <select name="brand" id="" onChange={handleChange} value={brand} >
                <option value="">Select Brand</option>
                <option value="ZARA">ZARA</option>
                <option value="Calvin Klein">Calvin Klein</option>
             </select>
-            <input type="submit" />
+            <input  className='submitbutton' type="submit" />
          </form>
       </div>
       <div className="displayproduct">
           {<>
-          <img  alt="{ImageURL}" />
+          <img src={data.images || images[0]} alt="image url not working" />
           <div className='ProductDetail'>
-          <h6> <b>Name:</b>  </h6>
-          <h6> <b>Price:</b> </h6>
-          <h6> <b>Cat :</b> </h6>
-          <h6> <b>Size :</b> </h6>
-          <h6> <b>Brand :</b> </h6>
-          <h6> <b>Des :</b> </h6>
+          <h6> <b>Title:</b> {data.title || title} </h6>
+          <h6> <b>Price:</b> {data.strike_price || strike_price}</h6>
+          <h6> <b>Cat :</b> {data.category || category}</h6>
+          {/* <h6> <b>Discount:</b> {discount_price} </h6> */}
+          <h6> <b>Size :</b> {data.size || size}</h6>
+          <h6> <b>Brand :</b> {data.brand || brand}</h6>
+          <h6> <b>Rating :</b> {data.rating || rating}</h6>
           </div>  
           </>}
       </div>  

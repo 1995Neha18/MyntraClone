@@ -5,6 +5,7 @@ import Admin from '../pages/Admin';
 import Edit from '../pages/Edit';
 import Mens from '../pages/mProduct/Mens';
 
+
 const AllRoutes = () => {
   return (
     <Routes>
@@ -12,6 +13,7 @@ const AllRoutes = () => {
         <Route  path="/mens" element ={<Mens/>}/>
         <Route  path="/admin" element ={<Admin/>}/>
         <Route path='admin/:id' element= {<Edit/>}></Route>
+        
     </Routes>
   )
 }
