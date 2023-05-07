@@ -7,18 +7,12 @@ import Footer from "./components/Footer";
 
 
 
-
-
 function App() {
   return (
     <div className="App" onReset={true}>
-
-      
       <Navbar />
-
-      <AllRoutes />
-      <Footer />
-   
+      <AllRoutes/>
+      <Footer /> 
     </div>
   );
 }
