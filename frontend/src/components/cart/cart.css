@@ -83,7 +83,8 @@
 }
 .cart__single>div{
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-    padding: 2%; 
+    padding: 2% 2% 0 2%; 
+    
 }
 .cart__wishlist{
     display: flex;
@@ -168,10 +169,11 @@
     background-color: rgb(251, 238, 238);
     display: grid;
     grid-template-columns: 20% 80%;
+    height:auto;
 }
 .price__gift__container>div{
     /* border:1px solid black; */
-    height:8rem
+    height:8rem;
 }
 .price__gift__container>div>img{
     height:100%;
@@ -184,7 +186,7 @@
 .price__gift__container>div:nth-child(2)>p:nth-child(2){
     font-size: 0.9rem;
     color:rgb(83, 79, 79);
-    line-height: 21px;
+    /* line-height: 15px; */
 }
 .price__gift__container>div:nth-child(2)>button{
    border:none;
@@ -213,7 +215,7 @@
     justify-content: space-between;
     padding: 5px;
     font-size: 0.95rem;
-    /* line-height: 18px; */
+    line-height: 10px;
 }
 .price__total{
     display:flex;
