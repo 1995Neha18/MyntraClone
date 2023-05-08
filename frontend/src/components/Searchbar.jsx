@@ -1,32 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const Searchbar = () => {
-  let [searchparams, setSearchparams] = useSearchParams();
-  let searchinital = searchparams.get("q");
-  let [search, setSearch] = useState(searchinital || []);
 
-//   const param = {
-//     category,
-//   };
+  let [query, setquery] = useState(null);
+  const Navigate = useNavigate()
 
-//   useEffect(() => {
-//     search && (param.q = search);
-//     setSearchparams(param);
-//   }, [search]);
+   const handleSearch = (e) =>{
+    e.preventDefault()
+    Navigate(`/search/${query}`)
+    console.log("hello")
+   }
 
   return (
-    <div>
+    <form onSubmit={handleSearch}>
       <input
         type="search"
         placeholder="Search"
         aria-label="Search"
-        onChange={(e) => setSearch(e.target.value)}
-        value={search}
+        onChange={(e) => setquery(e.target.value)}
         width={"100px"}
         height={"20px"}
       />
-    </div>
+    </form>
   );
 };
 

@@ -7,6 +7,6 @@ export const setlocalSt = (key,data) =>{
 
 export const getlocalSt = (key) =>{
   let value = localStorage.getItem(key)
-    return JSON.stringify(value)
+    return value
  }
 

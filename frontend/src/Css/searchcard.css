@@ -1,0 +1,43 @@
+.search-page{
+    height: 100vh;
+   
+}
+
+.search-main{
+     border: 3px solid #000;
+     height: 350px;
+     width: 250px;
+}
+
+
+.search-img{
+    border: 1px solid #c21818;
+    height: 280px ;
+}
+
+.search-img>img{
+
+    height: 280px ;
+}
+
+.searchcard-title{
+   margin-top: 5px;
+   font-weight: 500;
+}
+
+
+.search-page{
+    display: grid;
+    grid-template-columns: repeat(3, 50vh);
+    gap: 5px;
+     margin-left: 50px;
+    margin-right: 50px;
+
+}
+
+
+.search-err{
+    width: max-content;
+    margin: 20px;
+    height: 20vh;
+}
