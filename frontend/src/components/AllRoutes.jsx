@@ -7,11 +7,11 @@ import Mens from '../pages/mProduct/Mens';
 import Womens from '../pages/wProducts/Womens';
 import Login from '../pages/Login/Login';
 
-import { SearchProduct } from './SearchProduct';
+
 
 import PrivateRoute from './PrivateRoute';
 import SinglePoduct from "../pages/SingleProductPage"
-import {SearchProduct} from "../components/SearchProduct"
+import SearchProduct from "../components/SearchProduct"
 import SearchMain from './SearchMain';
 
 
