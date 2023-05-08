@@ -4,13 +4,12 @@ const cartSchema=mongoose.Schema({
     name: String,
     title: String,
     strike_price: Number,
-    size: String,
+    size: Array,
     brand: String,
     discount: String,
     category: String,
     image: Array,
     userID: String
-
 },{
     versionKey: false
 })
