@@ -23,16 +23,21 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from "@chakra-ui/icons";
-import { RiHandbagLine } from "react-icons/ri";
-import { HiOutlineHeart } from "react-icons/hi";
+import { RiHandbagLine, RiLogoutCircleRLine } from "react-icons/ri";
 import { IoPersonCircleSharp } from "react-icons/io5";
-import { NavLink } from "react-router-dom";
+import { NavLink, Navigate } from "react-router-dom";
 import Searchbar from "./Searchbar";
-
-
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
+ 
+  function handleLogout() {
+    localStorage.clear();
+    window.location.reload();
+  }
+
+
+
   // const Navigate = useNavigate();
   // const cartData = JSON.parse(localStorage.getItem("cartData")) || [];
   // const dispatch = useDispatch();
@@ -78,9 +83,10 @@ export default function Navbar() {
           >
             <NavLink to="/" >
             <Image
-            src="Myntra.png" alt="logo" width={"60%"} 
+            src="Myntra.png" alt="logo" width={"3rem"} 
             ml="2rem"
             mt={"5px"}
+            display={{ base: "none", sm: "flex" }}
             // onClick={() => Navigate("/")}
             />
             </NavLink>
@@ -120,6 +126,7 @@ export default function Navbar() {
           </NavLink>
      
           <Button
+            onClick={handleLogout}
             display={"flex"}
             flexDirection={"column"}
             fontSize={"xs"}
@@ -128,12 +135,12 @@ export default function Navbar() {
           >
             <IconButton
               aria-label="Wishlist"
-              icon={<HiOutlineHeart />}
+              icon={<RiLogoutCircleRLine />}
               variant="ghost"
               w="fit-content"
               _hover={{ bg: "pink" }}
             />
-            <Text>Wishlist</Text>
+            <Text>SignOut</Text>
           </Button>
 
           <NavLink to="/cart" >
@@ -182,7 +189,7 @@ const DesktopNav = () => {
 
   return (
     <Stack direction={"row"} spacing={6}
-    mr={"30rem"}
+    mr={"25rem"}
     mt={"10px"}
     >
       {NAV_ITEMS.map((navItem) => (
@@ -222,7 +229,7 @@ const DesktopNav = () => {
                 bg={popoverContentBgColor}
                 p={10}
                 rounded={"md"}
-                w={"6xl"}
+                w={"7xl"}
                 h={"auto"}
               >
                 <Flex
