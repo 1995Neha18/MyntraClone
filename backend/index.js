@@ -1,7 +1,7 @@
 const express = require('express');
 const { userRoutes } = require('./Routes/userRoutes');
 const { productRoutes } = require('./Routes/productRoutes');
-const {cartRoutes } = require('./Routes/cartRoutes')
+
 const { connection } = require('./config/db');
 const { authenticate } = require('./middleware/auth.middleware');
 const cors = require("cors")
@@ -14,22 +14,24 @@ app.use(express.json())
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 const { adminRoutes } = require('./Routes/adminRoutes');
+const {cartRoutes} = require('./Routes/cart.Routes');
+
 
 const swaggerDefinition = {
     openapi: '3.0.0',
     info: {
-      title: 'Express API for BOLT',
+      title: 'Express API for Urban Fashion',
       version: '1.0.0',
       description:
-        'This is a BOLT API application made with Express. It retrieves data from BOLT-BACKENED.',
+        'This is a Urban Fashion API application made with Express. It retrieves data from URBANFASHION-BACKENED.',
       contact: {
-        name: 'BOLT',
+        name: 'URBAN FASHION',
         url: 'https://jsonplaceholder.typicode.com',
       },
     },
     servers: [
       {
-        url: 'http://localhost:7913',
+        url: 'http://localhost:4500',
         description: 'Development server',
       },
     ],

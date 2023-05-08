@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Sidebar.css";
+import "../mProduct/Sidebar.css";
 import ResetRating from "./ResetRating";
 import { useSearchParams } from "react-router-dom";
 import { filter } from "../../redux/mReducer/actionType";
