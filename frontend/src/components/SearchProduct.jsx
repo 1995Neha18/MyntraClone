@@ -1,18 +1,31 @@
 import { Box, Image, Text } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+// import { baseUrl } from "../utils";
 
 export const SearchProduct = ({ images, product, price, category, id }) => {
   // console.log(images);
-  const navigate=useNavigate()
-  const handleClick=()=>{
-    navigate(`/details/${id}`)
+  const [search, setSearch] = React.useState([]);
+  let [query, setQuery] = useState("");
+
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`/details/${id}`);
     console.log(id);
-  }
+  };
+
+  // useEffect(() => {
+  //   axios.get(`${baseUrl}products/search?q=${query}`).then((res) => {
+  //     console.log(res.data);
+  //     setSearch(res.data);
+  //   });
+  // }, []);
+
   return (
     <Link to={`/details/${id}`}>
       <Box
-      onClick={handleClick}
+        onClick={handleClick}
         textAlign={"left"}
         color={"darkgray"}
         fontStyle={"bold"}
@@ -21,15 +34,17 @@ export const SearchProduct = ({ images, product, price, category, id }) => {
         w={"90%"}
       >
         <Image
-          src={images[0]}
+          src={images}
           // src={images[0]}
           alt="image"
-          width={'100%'}
-          h='320px'
-          objectFit='cover'
+          width={"100%"}
+          h="320px"
+          objectFit="cover"
         />
 
-        <Text as='h6' isTruncated>{product}</Text>
+        <Text as="h6" isTruncated>
+          {product}
+        </Text>
         <hr />
         {/* <h3>{id}</h3> */}
         <h2 style={{ color: "gray", fontWeight: "bold" }}>Rs. {price}</h2>

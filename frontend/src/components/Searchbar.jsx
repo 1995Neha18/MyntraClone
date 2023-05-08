@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { SearchProduct } from "./SearchProduct";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@chakra-ui/react";
 
 const Searchbar = () => {
-  let [searchparams, setSearchparams] = useSearchParams();
-  let searchinital = searchparams.get("q");
-  let [search, setSearch] = useState(searchinital || []);
+  
+  let [query, setQuery] = useState("");
+  const Navigate = useNavigate();
 
-//   const param = {
-//     category,
-//   };
+  //   const param = {
+  //     category,
+  //   };
 
-//   useEffect(() => {
-//     search && (param.q = search);
-//     setSearchparams(param);
-//   }, [search]);
+  //   useEffect(() => {
+  //     search && (param.q = search);
+  //     setSearchparams(param);
+  //   }, [search]);
 
   return (
     <div>
@@ -21,11 +23,18 @@ const Searchbar = () => {
         type="search"
         placeholder="Search"
         aria-label="Search"
-        onChange={(e) => setSearch(e.target.value)}
-        value={search}
+        onChange={(e) => setQuery(e.target.value)}
+        value={query}
         width={"100px"}
         height={"20px"}
       />
+      <button
+      onClick={() => Navigate(`/search?q=${query}`)}
+      >Search</button>
+
+      {/* <div>
+        <SearchProduct />
+      </div> */}
     </div>
   );
 };
