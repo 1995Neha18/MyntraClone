@@ -17,6 +17,7 @@ function SearchProduct({images,title,brand}) {
       </div>
     </div>
 
-
+  )
+}
 
 export default SearchProduct;
