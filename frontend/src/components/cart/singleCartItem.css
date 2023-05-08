@@ -1,0 +1,30 @@
+.sgl__prod__main{
+    /* height:40rem; */
+    width:100%;
+    /* background-color: aqua; */
+    display: grid;
+    grid-template-columns: 20% 70% 10%;
+}
+.sgl__prod__main>div{
+    /* border:1px solid red; */
+}
+.sgl__prod__main>div:nth-child(2){
+    padding: 5%;
+}
+
+
+.sgl__prod__price{
+    display: flex;
+    gap:1rem;
+}
+
+.sgl__prod__price>:nth-child(2){
+    color:rgb(135, 131, 131)
+}
+.sgl__prod__price>:nth-child(3){
+    color:rgb(247, 48, 48)
+}
+.remove__item{
+    display: flex;
+    justify-content: right;
+}
