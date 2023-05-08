@@ -55,21 +55,21 @@ function User() {
    const {username,email,password,age,city}=data
   return (
    <div>
-      <h1 >Add users</h1>
+      <h1 className='userheading'>Add users</h1>
     <div className="form">
       
-    <form action="" onSubmit={handleSubmit}>
+    <form className='mainform' action="" onSubmit={handleSubmit}>
        <label>Name : </label>
-       <input type="text" placeholder='User Name' onChange={handleChange} name="username" value={username} />
+       <input className='addproductinput' type="text" placeholder='User Name' onChange={handleChange} name="username" value={username} />
        <label>Email : </label>
-       <input type="text" placeholder='Email ID' onChange={handleChange} name='email'value={email}  />
+       <input className='addproductinput' type="text" placeholder='Email ID' onChange={handleChange} name='email'value={email}  />
        <label>Password : </label>
-        <input type="text" placeholder='Password' onChange={handleChange} name='password' value={password} />
+        <input className='addproductinput' type="text" placeholder='Password' onChange={handleChange} name='password' value={password} />
         <label>City : </label>
-        <input type="text"  placeholder='City' onChange={handleChange} name='city' value={city}  />
+        <input className='addproductinput' type="text"  placeholder='City' onChange={handleChange} name='city' value={city}  />
         <label>Age : </label>
-        <input type="text" placeholder='Age' onChange={handleChange} name='age' value={age}  />
-        <input className='submitbutton' type="submit" />
+        <input className='addproductinput' type="text" placeholder='Age' onChange={handleChange} name='age' value={age}  />
+        <input  className='submitbutton addproductinput' type="submit" />
     </form>
     </div> 
     </div>    

@@ -76,30 +76,30 @@ function Edit() {
          
       <div className="mainaddproduct">   
         <div className="form">
-         <form action="" onSubmit={handleSubmit}>
+         <form className='mainform' action="" onSubmit={handleSubmit}>
             <label>Title : </label>
-            <input type="text" placeholder='Product Name' name="title" onChange={handleChange} value={title}    />
+            <input className='addproductinput' type="text" placeholder='Product Name' name="title" onChange={handleChange} value={title}    />
             <label>Price : </label>
-            <input type="text" placeholder='Price ₹' onChange={handleChange} name="strike_price" value={strike_price} />
+            <input className='addproductinput' type="text" placeholder='Price ₹' onChange={handleChange} name="strike_price" value={strike_price} />
             <label>Size : </label>
             <input type="text"  placeholder='Size' onChange={handleChange} name="size"  value={size}/>
             <label>Image : </label>
-            <input type="text" placeholder='Image URL' onChange={handleChange} name="images"  value={images} />
+            <input className='addproductinput' type="text" placeholder='Image URL' onChange={handleChange} name="images"  value={images} />
             <label>Rating : </label>
-            <input type="text" placeholder='Rating' onChange={handleChange} name="rating" value={rating} />
+            <input className='addproductinput' type="text" placeholder='Rating' onChange={handleChange} name="rating" value={rating} />
             <label>Category : </label>
-            <select name="category" id="" onChange={handleChange} value={category} >
+            <select className='addproductinput' name="category" id="" onChange={handleChange} value={category} >
                <option value="">Select Category</option>
                <option value="Tshirt">Tshirt</option>
                <option value="Jacket">Jacket</option>
             </select>
             <label>Brand : </label>
-            <select name="brand" id="" onChange={handleChange} value={brand} >
+            <select className='addproductinput' name="brand" id="" onChange={handleChange} value={brand} >
                <option value="">Select Brand</option>
                <option value="ZARA">ZARA</option>
                <option value="Calvin Klein">Calvin Klein</option>
             </select>
-            <input  className='submitbutton' type="submit" />
+            <input  className='submitbutton addproductinput' type="submit" />
          </form>
       </div>
       <div className="displayproduct">
