@@ -1,5 +1,6 @@
 .search-page{
-    height: auto;
+    height: 100vh;
+   
 }
 
 .search-main{
@@ -27,7 +28,11 @@
 
 .search-page{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 50vh);
+    gap: 5px;
+     margin-left: 50px;
+    margin-right: 50px;
+
 }
 
 

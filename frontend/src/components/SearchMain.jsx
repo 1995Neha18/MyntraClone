@@ -31,9 +31,10 @@ function SearchMain() {
   console.log(search)
 
   return <div className="search-page">
-     {search?.length!==0 ? search?.map((el) => {
+     {search?.length!==0 ? search?.map((el) => 
+
          <SearchProduct key={el._id} {...el}/>
-      }) : <h1 className="search-err">Opps Search not find...</h1>   }
+      ) : <h1 className="search-err">Opps Search not find...</h1>   }
   </div>;
 }
 

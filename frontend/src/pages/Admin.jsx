@@ -30,12 +30,12 @@ function Admin() {
         
        <div className="sidebar">
            
-             <button className='sidebarbtn' onClick={()=>setpage("Home")}> <span><AiFillHome/>Dashboard</span></button>
-             <button className='sidebarbtn' onClick={()=>setpage("Products")}> <span><MdOutlineProductionQuantityLimits/>Products</span></button>
-             <button className='sidebarbtn' onClick={()=>setpage("Users")}><span><AiOutlineUser/>Users</span></button>
+             <button onClick={()=>setpage("Home")}> <span><AiFillHome/>Dashboard</span></button>
+             <button onClick={()=>setpage("Products")}> <span><MdOutlineProductionQuantityLimits/>Products</span></button>
+             <button onClick={()=>setpage("Users")}><span><AiOutlineUser/>Users</span></button>
              {/* <button onClick={()=>setpage("Edit")}><span><AiFillEdit/>Edit</span></button> */}
-             <button className='sidebarbtn' onClick={()=>setpage("Add")}><span><AiOutlineAppstoreAdd/>Add Product</span></button>
-             <button className='sidebarbtn' onClick={handleLogout}><span><CiLogout/>Logout</span></button>
+             <button onClick={()=>setpage("Add")}><span><AiOutlineAppstoreAdd/>Add Product</span></button>
+             <button onClick={handleLogout}><span><CiLogout/>Logout</span></button>
            
            
         </div>

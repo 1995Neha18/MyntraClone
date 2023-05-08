@@ -9,9 +9,8 @@ const Searchbar = () => {
    const handleSearch = (e) =>{
     e.preventDefault()
     Navigate(`/search/${query}`)
+    console.log("hello")
    }
-
-
 
   return (
     <form onSubmit={handleSearch}>
@@ -24,7 +23,6 @@ const Searchbar = () => {
         height={"20px"}
       />
     </form>
-
   );
 };
 
