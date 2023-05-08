@@ -7,6 +7,7 @@ import Mens from '../pages/mProduct/Mens';
 import Womens from '../pages/wProducts/Womens';
 import Login from '../pages/Login/Login';
 import PrivateRoute from './PrivateRoute';
+import SinglePoduct from "../pages/SingleProductPage"
 
 
 const AllRoutes = () => {
@@ -19,6 +20,7 @@ const AllRoutes = () => {
         </PrivateRoute>
         } />
         <Route path="/Womens" element={<Womens/>} />
+        <Route path="Mens/:id" element={<SinglePoduct/>} />
         <Route path="/Login" element={<Login/>} />
         <Route  path="/admin" element ={<Admin/>}/>
         <Route path='admin/:id' element= {<Edit/>}></Route>
