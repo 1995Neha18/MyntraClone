@@ -23,7 +23,7 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from "@chakra-ui/icons";
-import { RiHandbagLine } from "react-icons/ri";
+import { RiHandbagLine, RiLogoutCircleRLine } from "react-icons/ri";
 import { HiOutlineHeart } from "react-icons/hi";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
@@ -118,22 +118,24 @@ export default function Navbar() {
             <Text>Profile</Text>
           </Button>
           </NavLink>
-     
+
+          
           <Button
             display={"flex"}
             flexDirection={"column"}
             fontSize={"xs"}
             bg={"none"}
             _hover={{ bg: "white", color: "pink", fontWeight: "bold" }}
+            onClick={() => localStorage.clear()}
           >
             <IconButton
               aria-label="Wishlist"
-              icon={<HiOutlineHeart />}
+              icon={<RiLogoutCircleRLine />}
               variant="ghost"
               w="fit-content"
               _hover={{ bg: "pink" }}
             />
-            <Text>Wishlist</Text>
+            <Text>Logout</Text>
           </Button>
 
           <NavLink to="/cart" >

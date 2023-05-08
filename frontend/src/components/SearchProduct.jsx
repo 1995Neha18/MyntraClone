@@ -1,3 +1,4 @@
+
 import React from "react";
 
 function SearchProduct({images,title,brand}) {
@@ -15,7 +16,7 @@ function SearchProduct({images,title,brand}) {
         </div>
       </div>
     </div>
-  );
-}
+
+
 
 export default SearchProduct;

@@ -6,10 +6,14 @@ import Edit from '../pages/Edit';
 import Mens from '../pages/mProduct/Mens';
 import Womens from '../pages/wProducts/Womens';
 import Login from '../pages/Login/Login';
+
+import { SearchProduct } from './SearchProduct';
+
 import PrivateRoute from './PrivateRoute';
 import SinglePoduct from "../pages/SingleProductPage"
 import {SearchProduct} from "../components/SearchProduct"
 import SearchMain from './SearchMain';
+
 
 
 const AllRoutes = () => {
@@ -26,6 +30,7 @@ const AllRoutes = () => {
         <Route path="search/:keyword" element={<SearchMain/>} />
         <Route path="/Login" element={<Login/>} />
         <Route  path="/admin" element ={<Admin/>}/>
+        <Route  path="/search" element ={<SearchProduct/>}/>
         <Route path='admin/:id' element= {<Edit/>}></Route>
     </Routes>
   )
