@@ -2,7 +2,7 @@
 import { Box, Button, Flex, Grid, Image, Stack, Text, useToast } from '@chakra-ui/react'
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import Navbar from '../components/Navbar';
+import { getlocalSt } from '../utils/localStorage';
 import Footer from '../components/Footer';
 import { useParams } from 'react-router-dom';
 
@@ -15,28 +15,35 @@ const SingleProductPage = ({prod}) => {
     const { id } = useParams();
     
 
-    const fetchSingleProduct = async()=>{
-        await axios.get(`https://urban-backend.onrender.com/products/${id}`)
+  
+
+    useEffect(()=>{
+      axios.get(`https://urban-backend.onrender.com/products/search/${id}`,{
+          headers:{
+            Authorization:`bearer ${getlocalSt("token")}`
+          }
+        })
         .then((res)=>{
-            setSingleProduct(res)
-            setPoster(res?.image[0])
+          console.log(res.data)
+            setSingleProduct(res.data)
+            setPoster(res?.data.images[0])
         })
         .catch((err)=>{
             console.log(err)
         })
-    }
-
-    useEffect(()=>{
-        fetchSingleProduct()
     },[])
 
-    console.log(singleProduct.data,id)
+    console.log(singleProduct,id)
 
     const { title,brand, category, discount,rating, size,strike_price,rating_count} = singleProduct
 
     const AddtoBag = async () => {
         await axios
-          .post(`https://urban-backend.onrender.com/cart/`, singleProduct)
+          .post(`https://urban-backend.onrender.com/cart/add`, singleProduct,{
+            headers:{
+              Authorization:`bearer ${getlocalSt("token")}`
+            }
+          })
           .then((res) => {
             toast({
               title: 'Successfully Added.',
@@ -58,7 +65,6 @@ const SingleProductPage = ({prod}) => {
   
   return (
     <div style={{ width: "100%", border: "0px solid red", margin: "auto" }}>
-    <Navbar />
     <Box border={"0px solid black"} display={{base:"flex",sm:"flex",md:"none",lg:"npne"}} mt={"75px"} mb={"-60px"} width={"85%"} mx={"auto"} >
     
     </Box>
@@ -92,7 +98,7 @@ const SingleProductPage = ({prod}) => {
             border={"0px solid red"}
           >
             <Image
-              src={"https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/19888438/2022/9/22/591e68d2-7552-4e8f-a51d-63b6b028a4431663840257994-HELLCAT-Boys-Set-Of-2-Blue--White-Printed-Hooded-Sweatshirt--7.jpg"}
+              src={poster}
               borderRadius={20}
               m={"auto"}
               w={"100%"}

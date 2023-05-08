@@ -1,6 +1,8 @@
 import axios from "axios"
 import { baseUrl } from "../../utils/baseUrl"
 import { productFaliureAction, productRequestAction, productSuccessAction, wproductFaliureAction, wproductRequestAction, wproductSuccessAction } from "./action"
+import { getlocalSt } from "../../utils/localStorage"
+
 
 //
 export const GET_PRODUCTS_REQUEST = "GET_PRODUCTS_REQUEST"
@@ -28,6 +30,9 @@ export const getProducts = (obj) => (dispatch) =>{
             params:{
                 category:"Mens",
                  ...obj
+            },
+            headers:{
+              Authorization:`bearer ${getlocalSt("token")}`
             }
         }),
         axios.get(`${baseUrl}products/pagination`,{
@@ -35,6 +40,9 @@ export const getProducts = (obj) => (dispatch) =>{
               category:"Mens",
               limit:5,
               page:obj.page
+            },
+            headers:{
+              Authorization:`bearer ${getlocalSt("token")}`
             }
         })
       ])
@@ -62,6 +70,9 @@ export const wgetProducts = (obj) => (dispatch) =>{
             params:{
                 category:"Womens",
                  ...obj
+            },
+            headers:{
+              Authorization:`bearer ${getlocalSt("token")}`
             }
         }),
         axios.get(`${baseUrl}products/pagination`,{
@@ -69,6 +80,9 @@ export const wgetProducts = (obj) => (dispatch) =>{
               category:"Womens",
               limit:5,
               page:obj.page
+            },
+            headers:{
+              Authorization:`bearer ${getlocalSt("token")}`
             }
         })
       ])

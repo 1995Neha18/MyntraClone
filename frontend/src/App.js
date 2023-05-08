@@ -4,12 +4,14 @@ import AllRoutes from './components/AllRoutes';
 import Footer from "./components/Footer";
 
 
+
+
 function App() {
   return (
-    <div className="App" onReset={true}>
+    <div className="App" >
       <Navbar />
       <AllRoutes/>
-      <Footer /> 
+      <Footer />
     </div>
   );
 }
