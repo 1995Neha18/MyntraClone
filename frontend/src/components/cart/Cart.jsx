@@ -2,12 +2,16 @@ import React from 'react'
 import "./cart.css"
 import { GoTag } from 'react-icons/go';
 import { TbDiscount2 } from 'react-icons/tb';
+import { CiBookmarkCheck } from 'react-icons/ci';
+import { FaChevronRight } from 'react-icons/fa';
 import CartAccr from "./CartAccr"
+import SingleCartItem from './SingleCartItem';
 
 
 const Cart = () => {
   return (
     <div className='main'>
+  
        <div className='cart__items__section'>
 
             <div>
@@ -28,8 +32,20 @@ const Cart = () => {
                <img src="https://constant.myntassets.com/checkout/assets/img/ship-free.webp" alt="pic" width="40px" height="40px" />
                <p>Yay! <span className='silver'>No convenience fee</span> on this order.</p>
             </div>
+            <div className='cart__single'>
+               <div>< SingleCartItem /></div>
+               <div>< SingleCartItem /></div>
+               <div>< SingleCartItem /></div>
+               
+            </div>
             
-          
+            <div className='cart__wishlist'>
+               <div>
+                  <CiBookmarkCheck className='tag__icon'/>
+                  <a href=""><b>Add More From Wishlist</b></a>
+               </div>
+              <div><FaChevronRight/></div>
+            </div>
        </div>
 
 
@@ -88,6 +104,7 @@ const Cart = () => {
 
            <button className='order__button'> PLACE ORDER</button>
        </div>
+     
     </div>
   )
 }
