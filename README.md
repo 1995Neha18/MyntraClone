@@ -28,8 +28,8 @@ Render
 Chakra UI
 
 Features ✨
-Any user is be able to purchase the products from our website.
-For each product, we have created a detailed description page.
+Any user is be able to purchase the products from our website.\n
+For each product, we have created a detailed description page.\n
 User can add any item to cart or can buy it.
 For adding any Item to cart user must be signed up or logged in.
 Once the user created his account the next time user can be able to direct login.
