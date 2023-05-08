@@ -56,32 +56,32 @@ function AddProduct() {
          
       <div className="mainaddproduct">   
         <div className="form">
-         <form className='mainform' action="" onSubmit={handleSubmit}>
+         <form action="" onSubmit={handleSubmit}>
             <label>Title : </label>
-            <input className='addproductinput' type="text" placeholder='Product Name' onChange={handleChange} name="title" value={title}/>
+            <input type="text" placeholder='Product Name' onChange={handleChange} name="title" value={title}/>
             <label>Price : </label>
-            <input className='addproductinput' type="text" placeholder='Price ₹' onChange={handleChange} name="strike_price" value={strike_price}/>
+            <input type="text" placeholder='Price ₹' onChange={handleChange} name="strike_price" value={strike_price}/>
             <label>Discount Price : </label>
-            <input className='addproductinput' type="text" placeholder='Discount' onChange={handleChange} name="discount_price" value={discount_price}/>
+            <input type="text" placeholder='Discount' onChange={handleChange} name="discount_price" value={discount_price}/>
             <label>Size : </label>
-            <input className='addproductinput' type="text"  placeholder='Size' onChange={handleChange} name="size" value={size}/>
+            <input type="text"  placeholder='Size' onChange={handleChange} name="size" value={size}/>
             <label>Image : </label>
-            <input className='addproductinput' type="text" placeholder='Image URL' onChange={handleChange} name="images" value={images}/>
+            <input type="text" placeholder='Image URL' onChange={handleChange} name="images" value={images}/>
             <label>Rating : </label>
-            <input className='addproductinput' type="text" placeholder='Title' onChange={handleChange} name="rating" value={rating}/>
+            <input type="text" placeholder='Title' onChange={handleChange} name="rating" value={rating}/>
             <label>Category : </label>
-            <select className='addproductinput' name="category" id="" onChange={handleChange} value={category}>
+            <select name="category" id="" onChange={handleChange} value={category}>
                <option value="">Select Category</option>
                <option value="Tshirt">Tshirt</option>
                <option value="Jacket">Jacket</option>
             </select>
             <label>Brand : </label>
-            <select className='addproductinput' name="brand" id="" onChange={handleChange} value={brand}>
+            <select name="brand" id="" onChange={handleChange} value={brand}>
                <option value="">Select Brand</option>
                <option value="ZARA">ZARA</option>
                <option value="Calvin Klein">Calvin Klein</option>
             </select>
-            <input className='submitbutton addproductinput' type="submit" />
+            <input className='submitbutton' type="submit" />
          </form>
       </div>
       <div className="displayproduct">
