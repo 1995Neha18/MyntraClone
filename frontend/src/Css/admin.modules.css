@@ -1,6 +1,7 @@
 *{
     margin-top: 0;
     box-sizing: border-box;
+    
 }
 .main{
     width: 100%;
@@ -19,7 +20,7 @@
 .mainpage{
     width: 80%;
 }
-.sidebar button {
+.sidebarbtn {
    width: 90%;
    height: 10vh;
    margin: 1px;
@@ -36,7 +37,7 @@
     font-size: larger;
 }
 
-.sidebar button:hover{
+.sidebarbtn:hover{
     background-color: #FF80AB;
     transition: .25s ease-in-out;
 }
@@ -55,7 +56,7 @@
         justify-content: space-evenly;
         align-items: center;
     }
-    .sidebar button {
+    .sidebarbtn {
         width: 17%;
     }
    

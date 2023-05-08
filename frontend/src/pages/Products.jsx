@@ -50,20 +50,23 @@ function Products({setpage,setedit}) {
   }
 
   return (
+    <div>
+      <h1 className='userheading'>All Products</h1>
     <div className='gridmainsection'>
       {value.map((el)=>(
         <div className='gridcard'>
-            <img src={el.images[0]} alt="" />
+            <img className='gridimage' src={el.images[0]} alt="" />
             <h6>{el.title}</h6>
             <p>Price : {el.strike_price}</p>
             <p>Brand : {el.brand}</p>
             <div className="button">
-             <button id='deletebutton' onClick={()=>handledelete(el._id)}><AiFillDelete/></button>
-              <Link to={`/admin/${el._id}`}><button id='editbutton'><AiOutlineEdit/></button></Link>
+             <button className='bothbtn' id='deletebutton' onClick={()=>handledelete(el._id)}><AiFillDelete/></button>
+              <Link to={`/admin/${el._id}`}><button className='bothbtn' id='editbutton'><AiOutlineEdit/></button></Link>
             </div> 
         </div>
        ))}
     </div>
+    </div> 
   )
 }
 
