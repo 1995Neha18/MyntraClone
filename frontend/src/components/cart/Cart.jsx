@@ -30,7 +30,7 @@ const Cart = () => {
 //   }
 
   useEffect(() => {
-      axios.get(`http://localhost/cart`,{
+      axios.get(`https://urban-backend.onrender.com/cart`,{
          headers:{
             Authorization:`bearer ${localStorage.getItem("token")}`
          }
@@ -49,6 +49,7 @@ const Cart = () => {
       return sum+Number(el)
     },0)
     console.log(total)
+    console.log(data)
   return (
   
     <div className='main'>
@@ -75,13 +76,13 @@ const Cart = () => {
             </div>
             <div className='cart__single'>
               
-              {data.map((
+              {data && data?.map((
                {
                   images,
                   size,
                   title,
                   strike_price,
-                  discounted_price,
+            
                   discount,
                   brand,
                   _id
@@ -90,11 +91,11 @@ const Cart = () => {
                      <div>
                         < SingleCartItem 
                            key={Date.now()}
-                           images={images[0]}
+                           // images={images[0]}
                            title = {title}
                            size = {size}
                            org_price = {strike_price}
-                           dis_price = {discounted_price}
+                     
                            discount = {discount}
                            brand = {brand}
                            id = {_id}
