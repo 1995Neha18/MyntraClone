@@ -47,13 +47,20 @@ import { useNavigate } from 'react-router-dom';
       }
   
       if (isEmpty()) {
-        alert('Fill All Requried Input')
+        // alert('Fill All Requried Input')
+        toast({
+          title: `Fill All Requried Input`,
+          status: "warning",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        })
       } else {
         // alert('You Sucessfully Registerd Your Address')
         toast({
           title: `You Sucessfully booked Your Order`,
           status: "success",
-          duration: 2000,
+          duration: 4000,
           isClosable: true,
           position: "top",
         })
