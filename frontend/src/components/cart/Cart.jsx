@@ -52,7 +52,7 @@ const Cart = () => {
     console.log(data)
   return (
   
-    <div className='main'>
+    <div className='main_cart'>
   
        <div className='cart__items__section'>
 
@@ -78,7 +78,7 @@ const Cart = () => {
               
               {data && data?.map((
                {
-                  images,
+                  image,
                   size,
                   title,
                   strike_price,
@@ -91,7 +91,7 @@ const Cart = () => {
                      <div>
                         < SingleCartItem 
                            key={Date.now()}
-                           // images={images[0]}
+                           image={image[0]}
                            title = {title}
                            size = {size}
                            org_price = {strike_price}

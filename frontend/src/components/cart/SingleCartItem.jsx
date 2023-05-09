@@ -8,7 +8,7 @@ import axios from 'axios';
 
 
 
-const SingleCartItem = ({images,title,size,org_price,discount,brand,id}) => {
+const SingleCartItem = ({image,title,size,org_price,discount,brand,id}) => {
  
    const handleDelete = (id) => {
      console.log(id)
@@ -18,7 +18,7 @@ const SingleCartItem = ({images,title,size,org_price,discount,brand,id}) => {
     <div className='sgl__prod__main'>
         <div>
           <img 
-            src={images}
+            src={image}
             alt="pic"
            />
         </div>

@@ -25,19 +25,32 @@ import {
 } from "@chakra-ui/icons";
 import { RiHandbagLine, RiLogoutCircleRLine } from "react-icons/ri";
 import { IoPersonCircleSharp } from "react-icons/io5";
-import { NavLink, Navigate } from "react-router-dom";
+import { NavLink, Navigate, useNavigate } from "react-router-dom";
 import Searchbar from "./Searchbar";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { getlocalSt } from "../utils/localStorage";
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
+  const [data,setData] = useState([])
+  const navigate = useNavigate()
+  const [log,setlog] = useState(true)
  
   function handleLogout() {
     localStorage.clear();
-    window.location.reload();
+    navigate("/login")
+    setlog(!log)
   }
-
-
-
+  console.log(log)
+  useEffect(() => {
+    axios.get(`https://urban-backend.onrender.com/cart`,{
+       headers:{
+          Authorization:`bearer ${localStorage.getItem("token")}`
+       }
+    }).then((res)=>setData(res.data))
+},[])
+console.log(data.length)
   // const Navigate = useNavigate();
   // const cartData = JSON.parse(localStorage.getItem("cartData")) || [];
   // const dispatch = useDispatch();
@@ -140,7 +153,7 @@ export default function Navbar() {
               w="fit-content"
               _hover={{ bg: "pink" }}
             />
-            <Text>SignOut</Text>
+            <Text>{{log}==true? "SignIn" : "SignOut"}</Text>
           </Button>
 
           <NavLink to="/cart" >
@@ -158,7 +171,7 @@ export default function Navbar() {
               w="fit-content"
               _hover={{ bg: "pink" }}
             />
-            <Text>Bag</Text>
+            <Text>Bag<span style={{position : "relative", top:"-20px", fontSize : "15px",color : "red"}}>{data.length}</span></Text>
           </Button>
           </NavLink>
 
