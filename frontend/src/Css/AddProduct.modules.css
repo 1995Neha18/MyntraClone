@@ -80,3 +80,11 @@ form{
 .submitbutton:hover{
     background-color: #FF80AB;
 }
+
+.userform{
+    margin: auto;
+}
+
+.heading{
+    text-align: center;
+}

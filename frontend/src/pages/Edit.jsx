@@ -21,11 +21,11 @@ function Edit() {
   
   const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NDU1MDQ1NThjZGYwYWMzOTZmYTRhMDciLCJpYXQiOjE2ODMzODIyMTZ9.4EVYyMZ6R3_M99Te9FWmdeAMbtszSm7AtgnZbRLEjLI"
    useEffect(()=>{
-      fetch(`https://urban-backend.onrender.com/admin/search/${id}`,{
+      fetch(`https://urban-backend.onrender.com/products/search/${id}`,{
          method : "GET",
          headers : {
            "Content-type" : "application/json",
-           "Authorization" : `Bearer ${token}`
+           "Authorization" : `Bearer ${localStorage.getItem("token")}`
          }
        }).then((res)=>{
          return res.json()
@@ -48,11 +48,11 @@ function Edit() {
  
   const handleSubmit = (e)=>{
     e.preventDefault()
-    fetch(`https://urban-backend.onrender.com/admin/${id}`,{
+    fetch(`https://urban-backend.onrender.com/products/${id}`,{
       method : "PATCH",
       headers : {
          "Content-type" : "application/json",
-         "Authorization" : `Bearer ${token}`
+         "Authorization" : `Bearer ${localStorage.getItem("token")}`
       },
       body: JSON.stringify(data)
       }).then((res)=>{
