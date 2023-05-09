@@ -11,7 +11,7 @@ function Products({setpage,setedit}) {
    const {id} = useParams()
    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NDU1MDQ1NThjZGYwYWMzOTZmYTRhMDciLCJpYXQiOjE2ODMyOTMzMjl9.sOUFvK2toP3ZmD8tBftPhAeYkfOEZCF5Tb_MOKdqRIA"
    useEffect(()=>{
-    fetch("https://urban-backend.onrender.com/admin",{
+    fetch("https://urban-backend.onrender.com/products",{
          method : "GET",
          headers : {
             "Content-type" : "application/json",
@@ -33,11 +33,11 @@ function Products({setpage,setedit}) {
   
   
   const handledelete = (id)=>{
-    fetch(`https://urban-backend.onrender.com/admin/${id}`,{
+    fetch(`https://urban-backend.onrender.com/products/${id}`,{
       method : "DELETE",
       headers : {
         "Content-type" : "application/json",
-        "Authorization" : `Bearer ${token}`
+        "Authorization" : `Bearer ${localStorage.getItem("token")}`
       }
     }).then((res)=>{
       return res.json()

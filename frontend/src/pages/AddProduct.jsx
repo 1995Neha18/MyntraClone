@@ -25,11 +25,11 @@ function AddProduct() {
    }
    const handleSubmit  = (e)=>{
       e.preventDefault()
-      fetch("https://urban-backend.onrender.com/admin/add",{
+      fetch("https://urban-backend.onrender.com/products/add",{
          method : "POST",
          headers : {
             "Content-type" : "application/json",
-            "Authorization" : `Bearer ${token}`
+            "Authorization" : `Bearer ${localStorage.getItem("token")}`
          },
          body : JSON.stringify(data)
       })
