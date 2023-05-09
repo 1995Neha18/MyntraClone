@@ -7,6 +7,7 @@ import { FaChevronRight } from 'react-icons/fa';
 import CartAccr from "./CartAccr"
 import SingleCartItem from './SingleCartItem';
 import axios from "axios"
+import { useNavigate } from 'react-router-dom'
 
 const Cart = () => {
   const [data,setData] = useState([])
@@ -28,6 +29,12 @@ const Cart = () => {
 //         console.log(err.message)
 //      }
 //   }
+const navigate = useNavigate()
+
+function handleAddress(){
+
+   navigate("/cart/address");
+ }
 
   useEffect(() => {
       axios.get(`https://urban-backend.onrender.com/cart`,{
@@ -44,12 +51,14 @@ const Cart = () => {
       return sum+el
     },0)
 
-    let dis__price = data.map(({discounted_price})=>{return discounted_price})
-   let dis__total = dis__price.reduce((sum,el) =>{
-      return sum+Number(el)
-    },0)
-    console.log(total)
-    console.log(data)
+   //  let dis__price = data.map(({discounted_price})=>{return discounted_price})
+   // let dis__total = dis__price.reduce((sum,el) =>{
+   //    return sum+Number(el)
+   //  },0)
+   let dis = (total__price.length*200)
+    console.log({"total":total})
+    console.log({"discount":dis})
+    
   return (
   
     <div className='main_cart'>
@@ -158,7 +167,7 @@ const Cart = () => {
               </div>
               <div>
                  <p>Discount on MRP</p>
-                 <p><span className='green'>- ₹ {dis__total}</span> </p>
+                 <p><span className='green'>- ₹ {dis}</span> </p>
               </div>
               <div>
                  <p>Coupon Discount</p>
@@ -171,10 +180,10 @@ const Cart = () => {
            </div>
            <div className='price__total'>
              <p><b>Total Amount</b></p>
-             <p><b>₹ {total-dis__total}</b></p>
+             <p><b>₹ {total-dis}</b></p>
            </div>
 
-           <button className='order__button'> PLACE ORDER</button>
+           <button className='order__button' onClick={handleAddress}> PLACE ORDER</button>
        </div>
      
     </div>

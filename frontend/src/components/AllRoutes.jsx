@@ -11,7 +11,7 @@ import SinglePoduct from "../pages/SingleProductPage"
 import {SearchProduct} from "../components/SearchProduct"
 import SearchMain from './SearchMain';
 import Cart from './cart/Cart';
-
+import Address from "./Address/Address"
 
 const AllRoutes = () => {
   return (
@@ -29,6 +29,7 @@ const AllRoutes = () => {
         <Route path="/Login" element={<Login/>} />
         <Route  path="/admin" element ={<Admin/>}/>
         <Route  path="/cart" element ={<Cart/>}/>
+        <Route path="/cart/address" element={<Address />} />
         <Route path='admin/:id' element= {<Edit/>}></Route>
     </Routes>
   )
