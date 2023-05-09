@@ -153,7 +153,7 @@ console.log(data.length)
               w="fit-content"
               _hover={{ bg: "pink" }}
             />
-            <Text>{{log}==true? "SignIn" : "SignOut"}</Text>
+            <Text>{"SignIn"}</Text>
           </Button>
 
           <NavLink to="/cart" >
@@ -171,7 +171,7 @@ console.log(data.length)
               w="fit-content"
               _hover={{ bg: "pink" }}
             />
-            <Text>Bag<span style={{position : "relative", top:"-20px", fontSize : "15px",color : "red"}}>{data.length}</span></Text>
+            <Text>Bag</Text>
           </Button>
           </NavLink>
 
