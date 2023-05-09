@@ -269,7 +269,7 @@ const SingleProductPage = ({prod}) => {
         </Flex>
       </Box>
     </div>
-    <Footer />
+  
   </div>
 
   )
