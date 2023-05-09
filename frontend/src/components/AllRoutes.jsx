@@ -10,6 +10,7 @@ import PrivateRoute from './PrivateRoute';
 import SinglePoduct from "../pages/SingleProductPage"
 import {SearchProduct} from "../components/SearchProduct"
 import SearchMain from './SearchMain';
+import Cart from './cart/Cart';
 
 
 const AllRoutes = () => {
@@ -26,6 +27,7 @@ const AllRoutes = () => {
         <Route path="search/:keyword" element={<SearchMain/>} />
         <Route path="/Login" element={<Login/>} />
         <Route  path="/admin" element ={<Admin/>}/>
+        <Route  path="/cart" element ={<Cart/>}/>
         <Route path='admin/:id' element= {<Edit/>}></Route>
     </Routes>
   )
