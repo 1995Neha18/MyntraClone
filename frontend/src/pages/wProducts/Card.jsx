@@ -25,7 +25,7 @@ function Card({_id, images, strike_price, brand, title, discount, rating=5,r }) 
             {" "}
             <span>
               {" "}
-              <FiHeart /> WISHLIST{" "}
+              Buy{" "}
             </span>{" "}
           </button>
         </div>

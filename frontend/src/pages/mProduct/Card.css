@@ -57,6 +57,7 @@
     padding: 0 10px;
     height: 100%;
     margin-top: -49px;
+    cursor: pointer;
   } 
 
   .mens-card-desc:hover{

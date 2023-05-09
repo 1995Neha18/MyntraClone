@@ -23,6 +23,7 @@ const AllRoutes = () => {
         </PrivateRoute>
         } />
         <Route path="/Womens" element={<Womens/>} />
+        <Route path="Womens/:id" element={<SinglePoduct/>} />
         <Route path="Mens/:id" element={<SinglePoduct/>} />
         <Route path="search/:keyword" element={<SearchMain/>} />
         <Route path="/Login" element={<Login/>} />

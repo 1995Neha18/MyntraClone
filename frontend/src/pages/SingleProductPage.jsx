@@ -37,9 +37,10 @@ const SingleProductPage = ({prod}) => {
 
     const { title,brand, category, discount,rating, size,strike_price,rating_count} = singleProduct
 
-    const AddtoBag = async () => {
-        await axios
-          .post(`https://urban-backend.onrender.com/cart/add`, singleProduct,{
+    const AddtoBag =  () => {
+      let obj = {title,brand, category, discount,rating, size,strike_price,image:poster}
+         axios
+          .post(`https://urban-backend.onrender.com/cart/add`, obj ,{
             headers:{
               Authorization:`bearer ${getlocalSt("token")}`
             }
