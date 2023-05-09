@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./cart.css"
 import { GoTag } from 'react-icons/go';
 import { TbDiscount2 } from 'react-icons/tb';
@@ -6,10 +6,52 @@ import { CiBookmarkCheck } from 'react-icons/ci';
 import { FaChevronRight } from 'react-icons/fa';
 import CartAccr from "./CartAccr"
 import SingleCartItem from './SingleCartItem';
-
+import axios from "axios"
 
 const Cart = () => {
+  const [data,setData] = useState([])
+  
+//   let getCartData = async() => {
+//      try{
+//         let res = await fetch(`http://localhost:8080/cart`,{
+//          method:"GET",
+//          headers:{
+//             "Content-Type":"appliction/json",
+//             authorization:
+//          },
+
+//         })
+//          res = await res.json()
+//          setData(res)
+//          console.log(res)
+//      }catch(err){
+//         console.log(err.message)
+//      }
+//   }
+
+  useEffect(() => {
+      axios.get(`https://urban-backend.onrender.com/cart`,{
+         headers:{
+            Authorization:`bearer ${localStorage.getItem("token")}`
+         }
+      }).then((res)=>setData(res.data))
+  },[])
+  
+
+
+   let total__price = data.map(({strike_price})=>{return strike_price})
+   let total = total__price.reduce((sum,el) =>{
+      return sum+el
+    },0)
+
+    let dis__price = data.map(({discounted_price})=>{return discounted_price})
+   let dis__total = dis__price.reduce((sum,el) =>{
+      return sum+Number(el)
+    },0)
+    console.log(total)
+    console.log(data)
   return (
+  
     <div className='main'>
   
        <div className='cart__items__section'>
@@ -33,16 +75,46 @@ const Cart = () => {
                <p>Yay! <span className='silver'>No convenience fee</span> on this order.</p>
             </div>
             <div className='cart__single'>
-               <div>< SingleCartItem /></div>
-               <div>< SingleCartItem /></div>
-               <div>< SingleCartItem /></div>
+              
+              {data && data?.map((
+               {
+                  images,
+                  size,
+                  title,
+                  strike_price,
+            
+                  discount,
+                  brand,
+                  _id
+               }) => {
+                  return(
+                     <div>
+                        < SingleCartItem 
+                           key={Date.now()}
+                           // images={images[0]}
+                           title = {title}
+                           size = {size}
+                           org_price = {strike_price}
+                     
+                           discount = {discount}
+                           brand = {brand}
+                           id = {_id}
+                         
+                        />
+                     </div>
+                  )
+               }
+              )}
+               
+           
+               
                
             </div>
             
             <div className='cart__wishlist'>
                <div>
                   <CiBookmarkCheck className='tag__icon'/>
-                  <a href=""><b>Add More From Wishlist</b></a>
+                  <p><b>Add More From Wishlist</b></p>
                </div>
               <div><FaChevronRight/></div>
             </div>
@@ -82,11 +154,11 @@ const Cart = () => {
            <div className='price__detail'>
               <div>
                  <p>Total MRP</p>
-                 <p>₹ 2,899</p>
+                 <p>₹ {total}</p>
               </div>
               <div>
                  <p>Discount on MRP</p>
-                 <p><span className='green'>- ₹1,450</span> </p>
+                 <p><span className='green'>- ₹ {dis__total}</span> </p>
               </div>
               <div>
                  <p>Coupon Discount</p>
@@ -99,14 +171,18 @@ const Cart = () => {
            </div>
            <div className='price__total'>
              <p><b>Total Amount</b></p>
-             <p><b>₹1,450</b></p>
+             <p><b>₹ {total-dis__total}</b></p>
            </div>
 
            <button className='order__button'> PLACE ORDER</button>
        </div>
      
     </div>
+  
   )
+
 }
+
+
 
 export default Cart

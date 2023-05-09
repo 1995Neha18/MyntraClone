@@ -15,12 +15,14 @@ const Searchbar = () => {
   return (
     <form onSubmit={handleSearch}>
       <input
+        style={{padding: "5px"}}
         type="search"
         placeholder="Search"
         aria-label="Search"
         onChange={(e) => setquery(e.target.value)}
         width={"100px"}
         height={"20px"}
+        
       />
     </form>
   );
