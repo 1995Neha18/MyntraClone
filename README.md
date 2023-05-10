@@ -144,7 +144,7 @@ If you want to contact us, you can reach us through below handles.
 
 <h3>Neha Sahu - Team Lead</h3>
 
-[![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sapna1309)
+[![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/1995Neha18)
 
 <h3>Shivendra Paliwal - Team Member</h3>
 
