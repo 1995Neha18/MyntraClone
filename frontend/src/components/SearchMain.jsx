@@ -7,8 +7,6 @@ import { baseUrl } from "../utils/baseUrl";
 import { getlocalSt } from "../utils/localStorage";
 import SearchProduct from "./SearchProduct";
 
-
-
 function SearchMain() {
 
     const { keyword } = useParams();

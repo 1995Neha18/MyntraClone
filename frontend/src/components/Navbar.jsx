@@ -15,7 +15,9 @@ import {
   useBreakpointValue,
   useDisclosure,
   Image,
-//   HStack,
+  VStack,
+  Circle,
+  //   HStack,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -29,28 +31,33 @@ import { NavLink, Navigate, useNavigate } from "react-router-dom";
 import Searchbar from "./Searchbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { getlocalSt } from "../utils/localStorage";
+// import { getlocalSt } from "../utils/localStorage";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
-  const [data,setData] = useState([])
-  const navigate = useNavigate()
-  const [log,setlog] = useState(true)
- 
+  const [data, setData] = useState([]);
+  const navigate = useNavigate();
+  const [log, setlog] = useState(true);
+  const { cartLength } = useSelector((state) => state.mReducer);
+
   function handleLogout() {
     localStorage.clear();
-    navigate("/login")
-    setlog(!log)
+    navigate("/login");
+    setlog(!log);
   }
-  console.log(log)
+  console.log(log);
   useEffect(() => {
-    axios.get(`https://urban-backend.onrender.com/cart`,{
-       headers:{
-          Authorization:`bearer ${localStorage.getItem("token")}`
-       }
-    }).then((res)=>setData(res.data))
-},[])
-console.log(data.length)
+    axios
+      .get(`https://urban-backend.onrender.com/cart`, {
+        headers: {
+          Authorization: `bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => setData(res.data));
+  }, []);
+  // console.log("cartlength",cartLength);
   // const Navigate = useNavigate();
   // const cartData = JSON.parse(localStorage.getItem("cartData")) || [];
   // const dispatch = useDispatch();
@@ -60,8 +67,10 @@ console.log(data.length)
   // },[dispatch])
 
   return (
-    <Box w={"100%"} mx={"auto"} 
-    style={{ position: "sticky", top: 0, zIndex: 100 }}
+    <Box
+      w={"100%"}
+      mx={"auto"}
+      style={{ position: "sticky", top: 0, zIndex: 100 }}
     >
       <Flex
         bg={useColorModeValue("white", "gray.800")}
@@ -94,23 +103,25 @@ console.log(data.length)
             fontFamily={"heading"}
             color={useColorModeValue("gray.800", "white")}
           >
-            <NavLink to="/" >
-            <Image
-            src="Myntra.png" alt="logo" width={"3rem"} 
-            ml="2rem"
-            mt={"5px"}
-            display={{ base: "none", sm: "flex" }}
-            // onClick={() => Navigate("/")}
-            />
+            <NavLink to="/">
+              <Image
+                src="Myntra.png"
+                alt="logo"
+                width={"3rem"}
+                ml="2rem"
+                mt={"5px"}
+                display={{ base: "none", sm: "flex" }}
+                // onClick={() => Navigate("/")}
+              />
             </NavLink>
           </Text>
 
-          <Flex display={{ base: "none", md: "flex" }} ml={10}>
+          <Flex display={{ base: "none", md: "none", lg: "flex" }} ml={10}>
             <DesktopNav />
           </Flex>
         </Flex>
 
-        <Searchbar/>
+        <Searchbar />
 
         <Stack
           flex={{ base: 1, md: 0 }}
@@ -118,26 +129,26 @@ console.log(data.length)
           direction={"row"}
           spacing={2}
         >
-           
-          <NavLink to="/login" >
-          <Button
-            display={"flex"}
-            flexDirection={"column"}
-            fontSize={"xs"}
-            bg={"none"}
-            _hover={{ bg: "white", color: "pink", fontWeight: "bold" }}
-          >
-            <IconButton
-              aria-label="Wishlist"
-              icon={<IoPersonCircleSharp />}
-              variant="ghost"
-              w="fit-content"
-              _hover={{ bg: "pink" }}
-            />
-            <Text>Profile</Text>
-          </Button>
+          <NavLink to="/login">
+            <Button
+              display={"flex"}
+              flexDirection={"column"}
+              fontSize={"xs"}
+              bg={"none"}
+              _hover={{ bg: "white", color: "pink", fontWeight: "bold" }}
+            >
+              <IconButton
+                aria-label="Wishlist"
+                icon={<IoPersonCircleSharp />}
+                variant="ghost"
+                w="fit-content"
+                // _hover={{ bg: "pink" }}
+                fontSize={"20"}
+              />
+              <Text>Profile</Text>
+            </Button>
           </NavLink>
-     
+
           <Button
             onClick={handleLogout}
             display={"flex"}
@@ -151,28 +162,44 @@ console.log(data.length)
               icon={<RiLogoutCircleRLine />}
               variant="ghost"
               w="fit-content"
-              _hover={{ bg: "pink" }}
+              // _hover={{ bg: "pink" }}
+              fontSize={"20"}
             />
-            <Text>{"SignIn"}</Text>
+            <Text>{"SignOut"}</Text>
           </Button>
 
-          <NavLink to="/cart" >
-          <Button
-            display={"flex"}
-            flexDirection={"column"}
-            fontSize={"xs"}
-            bg={"none"}
-            _hover={{ bg: "white", color: "pink", fontWeight: "bold" }}
-          >
-            <IconButton
-              aria-label="Wishlist"
-              icon={<RiHandbagLine />}
-              variant="ghost"
-              w="fit-content"
-              _hover={{ bg: "pink" }}
-            />
-            <Text>Bag</Text>
-          </Button>
+          <NavLink to="/cart">
+            <Button
+              
+              flexDirection={"column"}
+              fontSize={"xs"}
+              bg={"none"}
+              _hover={{ bg: "white", color: "pink", fontWeight: "bold" }}
+            >
+              <VStack
+                spacing="0"
+                pos={"relative"}
+                top="-0.9rem"
+                right="0.6rem"
+                onClick={() => navigate("/cart")}
+                cursor="pointer"
+              >
+                <Circle
+                  position={"relative"}
+                  top="0.5rem"
+                  right="-0.7rem"
+                  bg={"pink.400"}
+                  color={"white"}
+                  size="1rem"
+                >
+                  <Text fontSize={"xs"} mt={"1rem"}>
+                    {cartLength}
+                  </Text>
+                </Circle>
+                <AiOutlineShoppingCart size="1.5rem" />
+                <Text fontSize={"xs"}>Cart</Text>
+              </VStack>
+            </Button>
           </NavLink>
 
           {/* <Text
@@ -184,7 +211,6 @@ console.log(data.length)
               >
                 {cartData.length}
               </Text> */}
-
         </Stack>
       </Flex>
 
@@ -201,20 +227,15 @@ const DesktopNav = () => {
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
-    <Stack direction={"row"} spacing={6}
-    mr={"25rem"}
-    mt={"10px"}
-    >
+    <Stack direction={"row"} spacing={6} mr={"25rem"} mt={"10px"}>
       {NAV_ITEMS.map((navItem) => (
-        <Box key={navItem.label}
-       
-        >
+        <Box key={navItem.label}>
           <Popover trigger={"hover"} placement={"bottom-start"}>
             <PopoverTrigger>
               <Link
                 p={2}
                 href={navItem.href ?? "#"}
-                fontSize={{md:'xs',lg:"sm"}}
+                fontSize={{ md: "xs", lg: "sm" }}
                 fontWeight={700}
                 color={linkColor}
                 _hover={{
@@ -223,15 +244,15 @@ const DesktopNav = () => {
                   borderBottom: "3px solid #BB1679",
                 }}
               >
-                {navItem.label==="MENS"?<NavLink to='/mens' >
-                {navItem.label}
-                </NavLink>:navItem.label==="WOMEN"?<NavLink to='/womens' >
-                {navItem.label}
-                </NavLink>:navItem.label==="KIDS"?<NavLink to='/kids' >
-                {navItem.label}
-                </NavLink>:<NavLink to='*' >
-                {navItem.label}
-                </NavLink>}
+                {navItem.label === "MENS" ? (
+                  <NavLink to="/mens">{navItem.label}</NavLink>
+                ) : navItem.label === "WOMEN" ? (
+                  <NavLink to="/womens">{navItem.label}</NavLink>
+                ) : navItem.label === "KIDS" ? (
+                  <NavLink to="/kids">{navItem.label}</NavLink>
+                ) : (
+                  <NavLink to="*">{navItem.label}</NavLink>
+                )}
               </Link>
             </PopoverTrigger>
 
