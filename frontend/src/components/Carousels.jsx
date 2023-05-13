@@ -38,9 +38,7 @@ export default function Carousels() {
       overflow={"hidden"}
       margin="auto"
       marginTop={10}
-      width={{ base:"60%" , sm:"90%" , md:"90%" , lg:'100%'}}
-      
-      
+      width={{ base: "100%", sm: "100%", md: "100%", lg: "100%" }}
     >
       {/* CSS files for react-slick */}
       <link
@@ -54,38 +52,12 @@ export default function Carousels() {
         type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
       />
-      {/* Left Icon */}
-      {/* <IconButton
-        aria-label="left-arrow"
-        colorScheme="messenger"
-        borderRadius="full"
-        position="absolute"
-        left={side}
-        top={top}
-        transform={"translate(0%, -50%)"}
-        zIndex={2}
-        onClick={() => slider?.slickPrev()}
-      >
-        <BiLeftArrowAlt />
-      </IconButton> */}
-      {/* Right Icon */}
-      {/* <IconButton
-        aria-label="right-arrow"
-        colorScheme="messenger"
-        borderRadius="full"
-        position="absolute"
-        right={side}
-        top={top}
-        transform={"translate(0%, -50%)"}
-        zIndex={2}
-        onClick={() => slider?.slickNext()}
-      >
-        <BiRightArrowAlt />
-      </IconButton> */}
-      
+
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
         <Box
           height={"400px"}
+          width={"100%"}
+          m={"auto"}
           position="relative"
           backgroundPosition="center"
           backgroundRepeat="no-repeat"
@@ -93,10 +65,12 @@ export default function Carousels() {
           backgroundImage={
             "https://assets.myntassets.com/w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2023/2/14/7cec9b95-a683-473c-aca8-cc510821b1cd1676394720493-Desktop-Banner.gif"
           }
-          width={{ base: "300px", md: "450px", lg: "80%", xl: "100%" }}
+          
         />
-         <Box
+        <Box
           height={"400px"}
+          width={"100%"}
+          m={"auto"}
           position="relative"
           backgroundPosition="center"
           backgroundRepeat="no-repeat"
@@ -107,6 +81,8 @@ export default function Carousels() {
         />
         <Box
           height={"400px"}
+          width={"100%"}
+          m={"auto"}  
           position="relative"
           backgroundPosition="center"
           backgroundRepeat="no-repeat"
@@ -114,10 +90,12 @@ export default function Carousels() {
           backgroundImage={
             "https://assets.myntassets.com/w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2022/4/17/abd2b07f-954c-43ad-ba39-bfa50527d0641650180659364-Backpacks---Luggage_Desk.jpg"
           }
-          width={{ base: "300px", md: "450px", lg: "80%", xl: "100%" }}
+    
         />
         <Box
           height={"400px"}
+          width={"100%"}
+          m={"auto"}
           position="relative"
           backgroundPosition="center"
           backgroundRepeat="no-repeat"
@@ -128,6 +106,8 @@ export default function Carousels() {
         />
         <Box
           height={"400px"}
+          width={"100%"}
+          m={"auto"}  
           position="relative"
           backgroundPosition="center"
           backgroundRepeat="no-repeat"
@@ -138,6 +118,8 @@ export default function Carousels() {
         />
         <Box
           height={"400px"}
+          width={"100%"}
+          m={"auto"}
           position="relative"
           backgroundPosition="center"
           backgroundRepeat="no-repeat"
@@ -148,6 +130,8 @@ export default function Carousels() {
         />
         <Box
           height={"400px"}
+          width={"100%"}
+          m={"auto"}
           position="relative"
           backgroundPosition="center"
           backgroundRepeat="no-repeat"
@@ -156,7 +140,6 @@ export default function Carousels() {
             "https://assets.myntassets.com/w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2022/5/31/4031994d-9092-4aa7-aea1-f52f2ae5194f1654006594976-Activewear_DK.jpg"
           }
         />
-       
       </Slider>
     </Box>
   );

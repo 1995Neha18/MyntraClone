@@ -15,7 +15,9 @@ const Searchbar = () => {
   return (
     <form onSubmit={handleSearch}>
       <input
-        style={{padding: "5px"}}
+        style={{padding: "5px",
+        display: "none"
+        }}
         type="search"
         placeholder="Search"
         aria-label="Search"
