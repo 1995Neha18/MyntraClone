@@ -15,36 +15,33 @@ import {
   } from '@chakra-ui/react'
   import { IoMdArrowDropdown } from 'react-icons/io';
   
-  let quantities = [1,2,3,4,5,6,7,8,9,10]
+let quantities = [1,2,3,4,5,6,7,8,9,10]
 
- const QtyModal = () => {
-    const { isOpen, onOpen, onClose } = useDisclosure()
-
+const QtyModal = ({Qty,id,qty}) => {
+   const { isOpen, onOpen, onClose } = useDisclosure()
    const [quantity,setQuantity] = useState(1)
-   
-    
-    const handleQuantityClick = () => {
-      
-      onOpen()
-    }
-  
-    const handle = (e) => {
-      setQuantity(e)
-      
-    }
+   const [change,setChange]=useState(false)
 
-    const handleQuantity = () => {
-      
+   const handleQuantityClick = () => {
+      onOpen()
+   }
+  
+   const handle = (e) => {
+      setQuantity(e)
+      setChange(true)
+   }
+
+   const handleQuantity = () => {
+      Qty({quantity,id})
       onClose()
     }
   
     return (
       <>
-        
-          <Button
+         <Button
             onClick={() => handleQuantityClick()}
             m={3}
-          >Qty: {quantity} <IoMdArrowDropdown/></Button>
+          >Qty: {qty} <IoMdArrowDropdown/></Button>
        
         <Modal onClose={onClose}  size={"sm"}  isOpen={isOpen}>
           <ModalOverlay  />
@@ -52,8 +49,6 @@ import {
             <ModalHeader>Select Qunatity</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              
-            
                  <Stack 
                     style={{
                       display:"grid",
@@ -66,9 +61,9 @@ import {
                     <Center>
                         <Circle 
                           size='50px' 
-                          color={quantity===el?"white":"black"} 
-                          bg={quantity===el?"rgb(255, 63, 108)":"white"} 
-                          border={quantity===el?"none":"1.5px solid black"}
+                          color={change===true?(quantity===el?"white":"black"):(qty===el?"white":"black")}
+                          bg={change===true?(quantity===el?"rgb(255, 63, 108)":"white"):(qty===el?"rgb(255, 63, 108)":"white")} 
+                          border={change===true?(quantity===el?"none":"1.5px solid black"):(qty===el?"none":"1.5px solid black")}
                           vlaue={quantity}
                           onClick={()=>(handle(el))}
                         >

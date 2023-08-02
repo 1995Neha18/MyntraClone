@@ -27,3 +27,45 @@
     display: flex;
     justify-content: right;
 }
+
+
+/* media query for mobile */
+@media screen and (max-width:650px){
+
+.sgl__prod__main{
+    /* height:40rem; */
+    width:100%;
+    display:flex;
+    flex-direction: column;
+}
+.sgl__prod__main>div{
+    /* border:1px solid red; */
+}
+
+.sgl__prod__main>div:nth-child(2){
+    padding: 3%;
+}
+
+
+.sgl__prod__price{
+    display: flex;
+    gap:0.5rem;
+}
+
+.sgl__prod__price>:nth-child(2){
+    color:rgb(135, 131, 131)
+}
+.sgl__prod__price>:nth-child(2)>p{
+    font-size: 0.8rem;
+}
+.sgl__prod__price>:nth-child(3){
+    color:rgb(247, 48, 48)
+}
+.remove__item{
+    display: flex;
+    position: absolute;
+    color:red;
+    font-weight: bolder;
+}
+
+}

@@ -38,7 +38,7 @@ const SingleProductPage = ({prod}) => {
     const { title,brand, category, discount,rating, size,strike_price,rating_count} = singleProduct
 
     const AddtoBag =  () => {
-      let obj = {title,brand, category, discount,rating, size,strike_price,image:poster}
+      let obj = {title,brand, category, discount,rating, size:[1],strike_price,image:poster}
          axios
           .post(`https://urban-backend.onrender.com/cart/add`, obj ,{
             headers:{

@@ -10,16 +10,22 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { cartLength } from "../Navbar";
 import { useDispatch } from "react-redux";
+import { useToast } from '@chakra-ui/react'
+
 const Cart = () => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [lId, setLId] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const toast = useToast()
 
   function handleAddress() {
     navigate("/cart/address");
   }
 
-  useEffect(() => {
+  // Getting all the Card items
+  const getCartData = () => {
     axios
       .get(`https://urban-backend.onrender.com/cart`, {
         headers: {
@@ -30,21 +36,73 @@ const Cart = () => {
         setData(res.data);
         dispatch({ type: "cartLength", payload: res.data.length });
       });
+  };
+
+
+// deleting item from cart
+  const handleDel = (id) => {
+    axios
+      .delete(`https://urban-backend.onrender.com/cart/${id}`, {
+        headers: {
+          Authorization: `bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => {
+        getCartData()
+        toast({
+          title: 'Successfully Deleted.',
+          description: "This product has been deleted to your cart.",
+          status: 'success',
+          duration:1500,
+          isClosable: true,
+        });
+      });
+  };
+
+
+  // handle quantity in a card
+  const Qty = ({ quantity, id }) => {
+    let qty = { size: [quantity] };
+    setLoading(true);
+    setLId(id);
+    axios
+      .patch(`https://urban-backend.onrender.com/cart/${id}`, qty, {
+        headers: {
+          Authorization: `bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => {
+        getCartData();
+        setLoading(false);
+        setLId(id);
+      });
+  };
+
+
+  // useEfect for mount phase
+  useEffect(() => {
+    getCartData();
   }, []);
 
+  
+  // total MRP with discount
   let total =
     typeof data == "object" &&
     data.reduce((sum, el) => {
-      return sum + el.strike_price;
+      return sum + el.strike_price * el.size[0];
     }, 0);
 
-  //  let dis__price = data.map(({discounted_price})=>{return discounted_price})
-  // let dis__total = dis__price.reduce((sum,el) =>{
-  //    return sum+Number(el)
-  //  },0)
-  let dis = typeof data == "object" && data.length * 200;
-  console.log({ total: total });
-  console.log({ discount: dis });
+  // total MRP without discount
+  let total_mrp =
+    typeof data == "object" &&
+    data.reduce((sum, el) => {
+      let dis = parseInt(el.discount.match(/\d+/)[0]) / 100;
+      let amount_off = (el.strike_price * el.size[0]) / (1 - dis);
+      return sum + amount_off;
+    }, 0);
+
+  // discount price
+  let dis = total_mrp.toFixed(0) - total.toFixed(0);
 
   return (
     <div className="main_cart">
@@ -106,6 +164,10 @@ const Cart = () => {
                       discount={discount}
                       brand={brand}
                       id={_id}
+                      handleDel={handleDel}
+                      Qty={Qty}
+                      lId={lId}
+                      loading={loading}
                     />
                   </div>
                 );
@@ -167,7 +229,7 @@ const Cart = () => {
         <div className="price__detail">
           <div>
             <p>Total MRP</p>
-            <p>₹ {total}</p>
+            <p>₹ {total_mrp.toFixed(0)}</p>
           </div>
           <div>
             <p>Discount on MRP</p>
@@ -196,7 +258,7 @@ const Cart = () => {
             <b>Total Amount</b>
           </p>
           <p>
-            <b>₹ {total - dis}</b>
+            <b>₹ {total.toFixed(0)}</b>
           </p>
         </div>
 
@@ -204,6 +266,7 @@ const Cart = () => {
           {" "}
           PLACE ORDER
         </button>
+        <div className="dash"></div>
       </div>
     </div>
   );

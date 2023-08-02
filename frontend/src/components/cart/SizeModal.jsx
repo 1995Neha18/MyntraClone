@@ -24,17 +24,14 @@ import {
    
     
     const handleSizeClick = () => {
-      
       onOpen()
     }
   
     const handle = (e) => {
       setSize(e)
-      
     }
 
     const handleSize = () => {
-      
       onClose()
     }
   
@@ -43,7 +40,6 @@ import {
         
           <Button
             onClick={() => handleSizeClick()}
-            // m={3}
           >Size: {size} <IoMdArrowDropdown/></Button>
        
         <Modal onClose={onClose}  size={"sm"}  isOpen={isOpen}>

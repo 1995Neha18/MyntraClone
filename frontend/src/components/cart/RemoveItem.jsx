@@ -8,30 +8,25 @@ import {
   Button,
   useDisclosure,
 } from '@chakra-ui/react'
-import axios from 'axios';
 import React from 'react'
 import {TfiClose } from 'react-icons/tfi';
 
-const RemoveItem = ({id}) => {
+const RemoveItem = ({id,handleDelete}) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const cancelRef = React.useRef()
 
   const deleteCart = () => {
-     axios.delete(`https://urban-backend.onrender.com/cart/${id}`,{
-      headers:{
-        Authorization:`bearer ${localStorage.getItem("token")}`
-      }
-     }).then((res)=>{window.location.reload()})
-     
-    onClose()
+     handleDelete(id)
+     onClose()
   }
 
   return (
     <>
       
-        <TfiClose
+      <TfiClose
         style={{ fontSize: "1.3rem"}}
-        onClick={onOpen} />
+        onClick={onOpen} 
+      />
       
 
       <AlertDialog
@@ -53,7 +48,7 @@ const RemoveItem = ({id}) => {
               <Button ref={cancelRef} onClick={onClose}>
                 Cancel
               </Button>
-              <Button colorScheme='red' onClick={ deleteCart} ml={3}>
+              <Button colorScheme='red' onClick={ deleteCart } ml={3}>
                 Remove
               </Button>
             </AlertDialogFooter>

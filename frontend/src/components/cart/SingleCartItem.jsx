@@ -3,17 +3,14 @@ import "./singleCartItem.css"
 import SizeModal from './SizeModal';
 import QtyModal from './QtyModal';
 import RemoveItem from './RemoveItem';
-import axios from 'axios';
+import { CircularProgress } from '@chakra-ui/react';
 
 
-
-
-const SingleCartItem = ({image,title,size,org_price,discount,brand,id}) => {
+const SingleCartItem = ({image,title,size,org_price,discount,brand,id,handleDel,Qty,lId,loading}) => {
  
-   const handleDelete = (id) => {
-     console.log(id)
-   }
-   // console.log(id)
+ let dis = parseInt(discount.match(/\d+/)[0])/100
+ let  amount_off = (org_price*size[0]/(1-dis))
+
   return (
     <div className='sgl__prod__main'>
         <div>
@@ -29,18 +26,25 @@ const SingleCartItem = ({image,title,size,org_price,discount,brand,id}) => {
               <SizeModal
                 size={size}
               />
-              <QtyModal/>
+              {lId===id && loading===true?  (loading===true?<CircularProgress style={{position:"relative",zIndex:"999"}} isIndeterminate color='green.300' />:null):null}
+              <QtyModal
+              id={id}
+              Qty={Qty}
+              qty={size[0]}
+              />
            </div>
            <div className='sgl__prod__price'>
-              <p><b>₹ {org_price}</b></p>
-              <p><s>₹ {500}</s></p>
+              <p><b>₹ {org_price*size[0]}</b></p>
+              <p><s>₹ {amount_off.toFixed(0)}</s></p>
               <p>{discount}</p>
            </div>
         </div>
         <div className='remove__item'>
-           <RemoveItem id={id} />
-        </div>
-        
+           <RemoveItem
+            id={id}
+            handleDelete={handleDel}
+            />
+        </div>   
     </div>
   )
 }
