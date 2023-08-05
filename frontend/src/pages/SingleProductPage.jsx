@@ -11,7 +11,8 @@ const SingleProductPage = ({prod}) => {
     const [singleProduct, setSingleProduct] = useState({});
     const [poster, setPoster] = useState("");
     const toast = useToast();
-  
+    const [addOnce,setAddOnce] = useState(false)
+
     const { id } = useParams();
     
 
@@ -38,7 +39,9 @@ const SingleProductPage = ({prod}) => {
     const { title,brand, category, discount,rating, size,strike_price,rating_count} = singleProduct
 
     const AddtoBag =  () => {
+      
       let obj = {title,brand, category, discount,rating, size:[1],strike_price,image:poster}
+      if(!addOnce){
          axios
           .post(`https://urban-backend.onrender.com/cart/add`, obj ,{
             headers:{
@@ -53,6 +56,7 @@ const SingleProductPage = ({prod}) => {
               duration:1500,
               isClosable: true,
             });
+            setAddOnce(true)
             // dispatch(());
           })
           .catch((err) => toast({
@@ -62,6 +66,15 @@ const SingleProductPage = ({prod}) => {
             duration:1500,
             isClosable: true,
           }));
+        }else{
+          toast({
+            title: 'Already Exist.',
+            description: "This product already exist in your cart.",
+            status: 'error',
+            duration:1500,
+            isClosable: true,
+          })
+        }
       };
   
   return (
