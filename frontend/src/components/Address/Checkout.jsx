@@ -22,11 +22,11 @@ import {
 } from '@chakra-ui/react'
 
 import { useToast } from '@chakra-ui/react'
-import axios from 'axios'
 
 import "../cart/cart.css"
 
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
 
 let addObj = {
   name: '',
@@ -343,8 +343,10 @@ export default function Multistep() {
   const [progress, setProgress] = useState(50)
   const ref = useRef({a:''})
   const  navigate = useNavigate()
+  const dispatch = useDispatch()
+
+
   const handleAddress= () => {
-    
     for (let key in ref.current) {
         if (ref.current[key] === '') {
             toast({
@@ -381,6 +383,7 @@ export default function Multistep() {
     })
 
     setTimeout(()=>{
+      dispatch({ type: "cartLength", payload: 0 });
       navigate("/")
     },2000)   
   }

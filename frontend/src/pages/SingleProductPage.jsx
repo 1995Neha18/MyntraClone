@@ -5,6 +5,8 @@ import React, { useEffect, useState } from 'react'
 import { getlocalSt } from '../utils/localStorage';
 import Footer from '../components/Footer';
 import { useParams } from 'react-router-dom';
+import { cartLength } from '../redux/mReducer/action';
+import { useDispatch } from 'react-redux';
 
 const SingleProductPage = ({prod}) => {
 
@@ -12,13 +14,29 @@ const SingleProductPage = ({prod}) => {
     const [poster, setPoster] = useState("");
     const toast = useToast();
     const [addOnce,setAddOnce] = useState(false)
-
-    const { id } = useParams();
     
+    const { id } = useParams();
+    const dispatch = useDispatch();
 
-  
+    const getCartData = () => {
+      axios
+        .get(`https://urban-backend.onrender.com/cart`, {
+          headers: {
+            Authorization: `bearer ${localStorage.getItem("token")}`,
+          },
+        })
+        .then((res) => {
+            dispatch({ type: "cartLength", payload: res.data.length });
+        })
+        .catch((err)=>{
+            console.log({"msg":err.message})
+        })
+    };
+
+
 
     useEffect(()=>{
+      getCartData() 
       axios.get(`https://urban-backend.onrender.com/products/search/${id}`,{
           headers:{
             Authorization:`bearer ${getlocalSt("token")}`
@@ -56,8 +74,8 @@ const SingleProductPage = ({prod}) => {
               duration:1500,
               isClosable: true,
             });
+            getCartData()
             setAddOnce(true)
-            // dispatch(());
           })
           .catch((err) => toast({
             title: 'Already Exist.',
@@ -75,6 +93,7 @@ const SingleProductPage = ({prod}) => {
             isClosable: true,
           })
         }
+        
       };
   
   return (

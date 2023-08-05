@@ -36,9 +36,24 @@ const Cart = () => {
         },
       })
       .then((res) => {
-        setData(res.data);
-        dispatch({ type: "cartLength", payload: res.data.length });
-      });
+        if(typeof res.data !== "object"){
+          toast({
+            title: `${res.data}`,
+            status: 'error',
+            duration:1500,
+            position:'top',
+            isClosable: true,
+          });
+             navigate("/login")
+        }else{
+          setData(res.data);
+          dispatch({ type: "cartLength", payload: res.data.length });
+          console.log({"msg":res.config.data})
+        }
+      })
+      .catch((err)=>{
+          console.log({"msg":err.message})
+      })
   };
 
 
@@ -106,8 +121,8 @@ const Cart = () => {
     }, 0);
 
   // discount price
-  let dis = total_mrp.toFixed(0) - total.toFixed(0);
-
+  let dis = total_mrp?.toFixed(0) - total?.toFixed(0);
+console.log(data)
   return (
     <>
   {data.length!==0?
@@ -236,7 +251,7 @@ const Cart = () => {
         <div className="price__detail">
           <div>
             <p>Total MRP</p>
-            <p>₹ {total_mrp.toFixed(0)}</p>
+            <p>₹ {total_mrp?.toFixed(2)}</p>
           </div>
           <div>
             <p>Discount on MRP</p>
@@ -265,7 +280,7 @@ const Cart = () => {
             <b>Total Amount</b>
           </p>
           <p>
-            <b>₹ {total.toFixed(0)}</b>
+            <b>₹ {total?.toFixed(2)}</b>
           </p>
         </div>
 
