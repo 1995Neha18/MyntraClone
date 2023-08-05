@@ -7,10 +7,10 @@ import { FaChevronRight } from "react-icons/fa";
 import CartAccr from "./CartAccr";
 import SingleCartItem from "./SingleCartItem";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { cartLength } from "../Navbar";
 import { useDispatch } from "react-redux";
-import { useToast } from '@chakra-ui/react'
+import { Button, useToast } from '@chakra-ui/react'
 
 const Cart = () => {
   const [data, setData] = useState([]);
@@ -21,7 +21,10 @@ const Cart = () => {
   const toast = useToast()
 
   function handleAddress() {
-    navigate("/cart/address");
+      const checkoutData = {
+        total,total_mrp,dis,data:data.length
+      }
+      navigate("/cart/address", { state: { checkoutData} });
   }
 
   // Getting all the Card items
@@ -54,6 +57,7 @@ const Cart = () => {
           description: "This product has been deleted to your cart.",
           status: 'success',
           duration:1500,
+          position:'top',
           isClosable: true,
         });
       });
@@ -105,6 +109,9 @@ const Cart = () => {
   let dis = total_mrp.toFixed(0) - total.toFixed(0);
 
   return (
+    <>
+  {data.length!==0?
+     
     <div className="main_cart">
       <div className="cart__items__section">
         <div>
@@ -225,7 +232,7 @@ const Cart = () => {
           </div>
         </div>
 
-        <p className="p__heading">PRICE DETAILS (1 items)</p>
+        <p className="p__heading">PRICE DETAILS (items {data?data.length:1})</p>
         <div className="price__detail">
           <div>
             <p>Total MRP</p>
@@ -269,6 +276,22 @@ const Cart = () => {
         <div className="dash"></div>
       </div>
     </div>
+  :
+  <div className="empty__img">
+        
+  <img 
+    src='https://cdni.iconscout.com/illustration/premium/thumb/empty-cart-5521508-4610092.png'
+    alt='empty-cart'
+    />
+    <h4>Add Some items from products page</h4>
+    <Link to="/">
+      <Button colorScheme='green' variant='solid'>
+        Add items
+      </Button>
+    </Link>
+</div>
+}
+    </>
   );
 };
 
