@@ -28,12 +28,12 @@ import {
 import { RiHandbagLine, RiLogoutCircleRLine } from "react-icons/ri";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { NavLink, Navigate, useNavigate } from "react-router-dom";
-import Searchbar from "./Searchbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 // import { getlocalSt } from "../utils/localStorage";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useSelector } from "react-redux";
+import Searchbar from "./Searchbar";
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
@@ -73,6 +73,8 @@ export default function Navbar() {
       style={{ position: "sticky", top: 0, zIndex: 100 }}
     >
       <Flex
+        width={"100%"}
+        h={"auto"}
         bg={useColorModeValue("white", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
         minH={"60px"}
@@ -81,7 +83,7 @@ export default function Navbar() {
         borderBottom={1}
         borderStyle={"solid"}
         borderColor={useColorModeValue("gray.200", "gray.900")}
-        align={"center"}
+       alignItems={"center"}
       >
         <Flex
           flex={{ base: 1, md: "auto" }}
@@ -107,8 +109,9 @@ export default function Navbar() {
               <Image
                 src="Myntra.png"
                 alt="logo"
-                width={"3rem"}
-                ml="2rem"
+                width={"2.6rem"}
+                height={"2.6rem"}
+                ml="1rem"
                 mt={"5px"}
                 display={{ base: "none", sm: "flex" }}
                 // onClick={() => Navigate("/")}
@@ -116,24 +119,23 @@ export default function Navbar() {
             </NavLink>
           </Text>
 
-          <Flex display={{ base: "none", md: "none", lg: "flex" }} ml={10}>
+          <Flex w="45%" display={{ base: "none", md: "none", lg: "flex" }} ml={10}>
             <DesktopNav />
           </Flex>
         </Flex>
 
-        <Searchbar />
-
         <Stack
+          w={"90%"}
           flex={{ base: 1, md: 0 }}
           justify={"flex-end"}
           direction={"row"}
-          spacing={2}
+          spacing={1}
         >
           <NavLink to="/login">
             <Button
               display={"flex"}
               flexDirection={"column"}
-              fontSize={"xs"}
+              fontSize={"11"}
               bg={"none"}
               _hover={{ bg: "white", color: "pink", fontWeight: "bold" }}
             >
@@ -143,7 +145,7 @@ export default function Navbar() {
                 variant="ghost"
                 w="fit-content"
                 // _hover={{ bg: "pink" }}
-                fontSize={"20"}
+                fontSize={"15"}
               />
               <Text>Profile</Text>
             </Button>
@@ -153,7 +155,7 @@ export default function Navbar() {
             onClick={handleLogout}
             display={"flex"}
             flexDirection={"column"}
-            fontSize={"xs"}
+            fontSize={"11"}
             bg={"none"}
             _hover={{ bg: "white", color: "pink", fontWeight: "bold" }}
           >
@@ -163,7 +165,7 @@ export default function Navbar() {
               variant="ghost"
               w="fit-content"
               // _hover={{ bg: "pink" }}
-              fontSize={"20"}
+              fontSize={"15"}
             />
             <Text>{"SignOut"}</Text>
           </Button>
@@ -172,7 +174,7 @@ export default function Navbar() {
             <Button
               
               flexDirection={"column"}
-              fontSize={"xs"}
+              fontSize={"11"}
               bg={"none"}
               _hover={{ bg: "white", color: "pink", fontWeight: "bold" }}
             >
@@ -192,12 +194,12 @@ export default function Navbar() {
                   color={"white"}
                   size="1rem"
                 >
-                  <Text fontSize={"xs"} mt={"1rem"}>
+                  <Text fontSize={"11"} mt={"1rem"}>
                     {cartLength}
                   </Text>
                 </Circle>
                 <AiOutlineShoppingCart size="1.5rem" />
-                <Text fontSize={"xs"}>Cart</Text>
+                <Text fontSize={"11"}>Cart</Text>
               </VStack>
             </Button>
           </NavLink>
@@ -213,7 +215,7 @@ export default function Navbar() {
               </Text> */}
         </Stack>
       </Flex>
-
+         
       <Collapse in={isOpen} animateOpacity>
         <MobileNav />
       </Collapse>
@@ -227,7 +229,7 @@ const DesktopNav = () => {
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
-    <Stack direction={"row"} spacing={6} mr={"25rem"} mt={"10px"}>
+    <Stack direction={"row"} spacing={2} mr={"10px"} mt={"10px"}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
           <Popover trigger={"hover"} placement={"bottom-start"}>
@@ -236,7 +238,7 @@ const DesktopNav = () => {
                 p={2}
                 href={navItem.href ?? "#"}
                 fontSize={{ md: "xs", lg: "sm" }}
-                fontWeight={700}
+                fontWeight={600}
                 color={linkColor}
                 _hover={{
                   textDecoration: "none",
@@ -323,15 +325,18 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
 
 const MobileNav = () => {
   return (
+    <Box>
     <Stack
       bg={useColorModeValue("white", "gray.800")}
       p={4}
       display={{ md: "none" }}
     >
+   <Searchbar/>
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
     </Stack>
+    </Box>
   );
 };
 
