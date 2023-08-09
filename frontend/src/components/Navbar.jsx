@@ -107,7 +107,7 @@ export default function Navbar() {
           >
             <NavLink to="/">
               <Image
-                src="Myntra.png"
+                src="https://i.ibb.co/tCsc8w1/Myntra.png"
                 alt="logo"
                 width={"2.6rem"}
                 height={"2.6rem"}
