@@ -117,13 +117,16 @@ export default function Navbar() {
                 // onClick={() => Navigate("/")}
               />
             </NavLink>
-          </Text>
-
+          </Text>  
           <Flex w="45%" display={{ base: "none", md: "none", lg: "flex" }} ml={10}>
             <DesktopNav />
           </Flex>
         </Flex>
-
+        
+         <Box  display={{ base: "none", md: "block", lg: "block" }} >
+           <Searchbar/>
+         </Box>
+        
         <Stack
           w={"90%"}
           flex={{ base: 1, md: 0 }}
