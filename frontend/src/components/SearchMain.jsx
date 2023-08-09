@@ -6,6 +6,7 @@ import axios from "axios";
 import { baseUrl } from "../utils/baseUrl";
 import { getlocalSt } from "../utils/localStorage";
 import SearchProduct from "./SearchProduct";
+import Card from "../pages/mProduct/Card"
 
 function SearchMain() {
 
@@ -31,7 +32,7 @@ function SearchMain() {
   return <div className="search-page">
      {search?.length!==0 ? search?.map((el) => 
 
-         <SearchProduct key={el._id} {...el}/>
+         <Card key={el._id} {...el}/>
       ) : <h1 className="search-err">Opps Search not find...</h1>   }
   </div>;
 }
