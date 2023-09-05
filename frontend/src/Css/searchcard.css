@@ -43,14 +43,14 @@
    
   .search-page{
       display: grid;
-     grid-template-columns: repeat(auto, 1fr);
+     grid-template-columns: repeat(1, 200px);
      gap: 30px;
     }
 
 }
 
 
-@media only screen and (max-width: 800px) and (min-width: 451px) {
+@media only screen and (max-width: 800px) and (min-width: 450px) {
    
   .search-page{
       display: grid;

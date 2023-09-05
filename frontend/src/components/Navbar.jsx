@@ -41,6 +41,7 @@ export default function Navbar() {
   const navigate = useNavigate();
   const [log, setlog] = useState(true);
   const { cartLength } = useSelector((state) => state.mReducer);
+  const isAuth = localStorage.getItem("isAuth")
 
   function handleLogout() {
     localStorage.clear();
@@ -128,6 +129,7 @@ export default function Navbar() {
          </Box>
         
         <Stack
+        
           w={"90%"}
           flex={{ base: 1, md: 0 }}
           justify={"flex-end"}
@@ -170,7 +172,7 @@ export default function Navbar() {
               // _hover={{ bg: "pink" }}
               fontSize={"15"}
             />
-            <Text>{"SignOut"}</Text>
+            <Text>{isAuth ?"SignOut":"SignIn"}</Text>
           </Button>
 
           <NavLink to="/cart">
